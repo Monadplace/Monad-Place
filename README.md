@@ -1,23 +1,28 @@
-# Monad Place marketing page
+# Monad Place homepage — development preview
 
-A lightweight, responsive landing page for GitHub Pages. It introduces Monad Place and directs visitors to the main site at [monadplace.com](https://monadplace.com/) or to `contact@monadplace.com`.
+This is a first-pass homepage prototype for review. It is a static HTML/CSS/JS page and requires no build step.
 
-## Publish with GitHub Pages
+## Preview locally
+Open `index.html` in a browser. For a local server, run `python3 -m http.server 8000` from this directory and visit `http://localhost:8000`.
 
-1. Create a GitHub repository for this page.
-2. Upload the contents of this folder to the repository root. Keep `index.html`, `.nojekyll`, and the `assets/` folder together.
-3. Open **Settings → Pages** in the repository.
-4. Under **Build and deployment**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save.
-5. GitHub Pages will show the published `github.io` address in the same settings panel.
+## Included
+- Premium black / gold / ivory visual direction
+- Responsive desktop and mobile navigation
+- Hybrid-space positioning: in-person, online, recorded, livestreamed
+- Event rentals, media production, livestreaming/content, and shared workspace sections
+- Kitchen and lounge presented as amenities
+- Custom inline SVG artwork in the workspace section (ready to replace with approved photography)
+- Basic page metadata, semantic sections, keyboard focus styles, and reduced-motion support
 
-No Node, package install, build command, or server is required. The page uses relative paths for local assets and works as a GitHub project page.
+## Not connected yet
+- Inquiry buttons currently open an email draft to contact@monadplace.com. No form submissions are stored.
+- No prices, capacity figures, or equipment specifications are published because these details need confirmation.
+- This preview has not been connected to GitHub or deployed to Netlify. It does not change the live website.
+- Replace the abstract workspace artwork with approved Monad Place photography before launch.
 
-## Domain note
-
-This page sends visitors to `https://monadplace.com/`. It does not configure a `CNAME` file or replace the main site's DNS. Use GitHub's generated `github.io` URL for this campaign page unless you intentionally choose a separate subdomain later.
-
-## Page contents
-
-- `index.html` — complete single-page marketing site
-- `assets/monad-place-overview.png` — supplied Monad Place overview artwork, retained as a reusable campaign asset
-- `.nojekyll` — tells GitHub Pages to publish files as-is
+## Next production steps
+1. Review and approve the positioning, sections, photo, and visual direction.
+2. Confirm factual venue details, service scope, and approved photography.
+3. Audit the Netlify/GitHub relationship and CRM form setup.
+4. Build the remaining sitemap pages and connect the approved inquiry workflow.
+5. Test accessibility, mobile behavior, SEO, and deployment previews before production release.
