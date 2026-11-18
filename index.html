@@ -3,351 +3,377 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090908">
-  <meta name="description" content="A premium hybrid space for in-person gatherings, online participation, recording, livestreaming, and shared workspace. Discover Monad Place.">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Host your next gathering at Monad Place, a Phoenix-area event venue with on-site filming, livestreaming, and content production.">
+  <title>Monad Place | Phoenix-Area Event Space &amp; Media Production</title>
+  <link rel="canonical" href="https://monadplace.github.io/Monad-Place/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Monad Place | One Space. Multiple Ways to Connect.">
-  <meta property="og:description" content="A premium hybrid space to gather in person, connect online, record, and create.">
-  <title>Monad Place | One Space. Multiple Ways to Connect.</title>
+  <meta property="og:site_name" content="Monad Place">
+  <meta property="og:title" content="Monad Place | Phoenix-Area Event Space &amp; Media Production">
+  <meta property="og:description" content="Host your event at Monad Place and add on-site filming, livestreaming, or editing. Explore rental rates and production packages.">
+  <meta property="og:url" content="https://monadplace.github.io/Monad-Place/">
+  <meta property="og:image" content="https://monadplace.github.io/Monad-Place/assets/monad-event-room.webp">
+  <meta property="og:image:alt" content="Main event room at Monad Place with presentation screens and rows of tables">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: dark;
-      --black: #090908;
-      --panel: #14130f;
-      --panel-2: #1b1913;
+      --black: #0b0b0b;
+      --ink: #171512;
       --gold: #d4af37;
-      --gold-light: #f0d77c;
+      --gold-light: #f4d978;
+      --gold-dim: #8e7129;
+      --stone: #6b6559;
       --ivory: #f5f1e6;
-      --muted: #b7b1a2;
-      --line: rgba(212,175,55,.28);
+      --line: rgba(212,175,55,.33);
       --display: "Playfair Display", Georgia, serif;
-      --body: "DM Sans", Arial, sans-serif;
-      --wrap: 1160px;
+      --body: "Montserrat", Arial, sans-serif;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-    body { margin: 0; background: var(--black); color: var(--ivory); font: 15px/1.7 var(--body); }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--black); color: var(--ivory); font: 14px/1.65 var(--body); }
     a { color: inherit; }
-    img { max-width: 100%; display: block; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
-    .wrap { width: min(var(--wrap), calc(100% - 48px)); margin-inline: auto; }
-    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--gold-light); font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--gold); }
-    .site-header { position: absolute; inset: 0 0 auto; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(9,9,8,.82); backdrop-filter: blur(14px); }
-    .header-row { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; min-width: max-content; }
-    .brand-mark { width: 43px; height: 43px; filter: drop-shadow(0 0 10px rgba(212,175,55,.22)); }
-    .brand-copy { display: grid; line-height: 1.15; }
-    .brand-name { color: var(--gold-light); font: 600 21px/1.1 var(--display); letter-spacing: .08em; }
-    .brand-tag { margin-top: 6px; color: #c9c1ad; font-size: 8px; letter-spacing: .18em; text-transform: uppercase; }
-    .nav { display: flex; align-items: center; gap: clamp(15px,2.2vw,30px); }
-    .nav a { color: #e7e0d1; text-decoration: none; font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; transition: color .2s; }
+    button, input, select, textarea { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
+    .site-header { position: absolute; z-index: 10; inset: 0 0 auto; border-bottom: 1px solid rgba(212,175,55,.45); background: linear-gradient(180deg, rgba(0,0,0,.88), rgba(0,0,0,.18)); }
+    .header-row { height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; min-width: 0; }
+    .brand-icon { display: block; width: 50px; height: 50px; flex: 0 0 auto; filter: drop-shadow(0 0 8px rgba(212,175,55,.54)); }
+    .brand-text { display: grid; line-height: 1.2; }
+    .brand-name { font: 600 21px/1.1 var(--display); letter-spacing: .13em; color: var(--gold-light); white-space: nowrap; }
+    .brand-tag { font-size: 8px; letter-spacing: .23em; color: var(--ivory); text-transform: uppercase; margin-top: 6px; white-space: nowrap; }
+    .nav { display: flex; align-items: center; gap: 24px; font-size: 10px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
+    .nav a { text-decoration: none; color: rgba(245,241,230,.84); transition: color .18s; }
     .nav a:hover { color: var(--gold-light); }
-    .nav .nav-cta { padding: 11px 16px; border: 1px solid var(--gold); color: var(--gold-light); }
-    .menu-toggle { display: none; border: 1px solid var(--line); background: transparent; color: var(--ivory); padding: 9px 12px; font: 600 10px var(--body); letter-spacing: .1em; text-transform: uppercase; }
-    .hero { position: relative; isolation: isolate; min-height: 740px; padding: 170px 0 90px; overflow: hidden; background: radial-gradient(ellipse at 78% 42%, rgba(212,175,55,.12), transparent 34%), linear-gradient(120deg,#080807 10%,#17140d 58%,#090908 100%); }
-    .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .16; background: repeating-linear-gradient(135deg,transparent 0 140px,rgba(212,175,55,.25) 141px,transparent 142px 250px); mask-image: linear-gradient(110deg,transparent 35%,#000 100%); }
-    .hero::after { content: ""; position: absolute; z-index: -1; width: 610px; aspect-ratio: 1; right: -240px; top: 100px; border: 1px solid rgba(212,175,55,.24); border-radius: 50%; box-shadow: 0 0 0 42px rgba(212,175,55,.035),0 0 0 92px rgba(212,175,55,.025),0 0 0 150px rgba(212,175,55,.018); }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 55px; align-items: center; }
-    h1,h2,h3,p { margin-top: 0; }
-    h1 { max-width: 720px; margin: 24px 0; font: 500 clamp(52px,7vw,88px)/.99 var(--display); letter-spacing: -.045em; }
+    .nav .nav-cta { padding: 10px 16px; border: 1px solid var(--gold); border-radius: 2px; color: var(--gold-light); }
+    .hero { min-height: 650px; padding: 150px 0 70px; position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 76% 34%, rgba(142,113,41,.17), transparent 35%), linear-gradient(120deg,#080807 15%, #15120b 57%, #090908 100%); }
+    .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .18; background: repeating-linear-gradient(137deg, transparent 0 130px, rgba(212,175,55,.2) 131px, transparent 132px 240px); mask-image: linear-gradient(110deg, transparent 40%, #000 100%); }
+    .hero::after { content: ""; position: absolute; z-index: -1; width: 560px; height: 560px; border: 1px solid rgba(212,175,55,.22); border-radius: 50%; right: -190px; top: 6px; box-shadow: 0 0 0 35px rgba(212,175,55,.035), 0 0 0 76px rgba(212,175,55,.025), 0 0 0 125px rgba(212,175,55,.018); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .93fr); gap: 52px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 9px; font-weight: 700; letter-spacing: .25em; color: var(--gold-light); text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { color: var(--ivory); font: 500 clamp(48px,6.8vw,80px)/.98 var(--display); letter-spacing: -.04em; margin: 22px 0 22px; max-width: 630px; }
     h1 em { color: var(--gold); font-weight: 400; }
-    .hero-copy > p { max-width: 570px; color: #d0c9b9; font-size: 16px; line-height: 1.9; }
-    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 15px; min-height: 48px; padding: 13px 19px; border: 1px solid var(--gold); background: var(--gold); color: #100e08; text-decoration: none; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: transform .2s,background .2s; }
-    .button:hover { transform: translateY(-2px); background: var(--gold-light); }
+    .hero-copy > p { max-width: 520px; color: rgba(245,241,230,.75); font-size: 14px; line-height: 1.85; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 13px; border: 1px solid var(--gold); padding: 12px 18px; border-radius: 2px; background: var(--gold); color: #110f09; text-decoration: none; text-transform: uppercase; font-size: 9px; font-weight: 700; letter-spacing: .12em; transition: background .18s, color .18s, transform .18s; }
+    .button:hover { background: var(--gold-light); transform: translateY(-2px); }
     .button.secondary { background: transparent; color: var(--gold-light); }
-    .button.secondary:hover { background: var(--gold-light); color: #100e08; }
-    .hero-art { position: relative; display: grid; place-items: center; min-height: 440px; }
-    .orbit { position: absolute; width: min(35vw,390px); aspect-ratio: 1; border: 1px solid rgba(212,175,55,.52); border-radius: 50%; transform: rotate(28deg) scaleY(.86); box-shadow: 0 0 60px rgba(212,175,55,.08),inset 0 0 55px rgba(212,175,55,.05); }
-    .orbit.two { width: min(30vw,330px); transform: rotate(-31deg) scaleY(.8); border-color: rgba(240,215,124,.36); }
-    .hero-emblem { width: min(25vw,250px); height: auto; }
-    .hero-art-note { position: absolute; right: 0; bottom: 8px; color: #c9c1ad; font: italic 16px var(--display); text-align: right; }
-    .intro-strip { border-block: 1px solid var(--gold); background: #11100d; }
-    .intro-strip .wrap { display: grid; grid-template-columns: repeat(3,1fr); }
-    .strip-item { padding: 25px 22px; text-align: center; }
-    .strip-item + .strip-item { border-left: 1px solid var(--line); }
-    .strip-item strong { display: block; color: var(--gold-light); font: 500 22px var(--display); }
-    .strip-item span { color: var(--muted); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
-    .section { padding: 104px 0; }
-    .section-light { background: var(--ivory); color: #17150f; }
+    .button.secondary:hover { color: var(--black); background: var(--gold-light); }
+    .arrow { font-size: 15px; line-height: .7; }
+    .arrow { display: inline-block; transform: rotate(-45deg); }
+    .hero-emblem { position: relative; display: grid; place-items: center; min-height: 370px; }
+    .hero-emblem::before, .hero-emblem::after { content: ""; position: absolute; width: min(31vw, 335px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(212,175,55,.48); transform: rotate(30deg) scaleY(.9); box-shadow: 0 0 45px rgba(212,175,55,.08), inset 0 0 45px rgba(212,175,55,.06); }
+    .hero-emblem::after { width: min(27vw, 295px); transform: rotate(-30deg) scaleY(.78); border-color: rgba(244,217,120,.33); }
+    .hero-emblem .brand-icon { width: min(22vw, 228px); height: auto; z-index: 1; }
+    .quick-stats { position: relative; z-index: 2; background: #11100d; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); }
+    .stat { min-height: 88px; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 16px; }
+    .stat + .stat { border-left: 1px solid var(--line); }
+    .stat strong { display: block; font: 500 26px/1.05 var(--display); color: var(--gold-light); }
+    .stat span { display: block; margin-top: 5px; color: rgba(245,241,230,.7); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; }
+    .section { padding: 92px 0; }
+    .section-light { background: var(--ivory); color: var(--ink); }
     .section-dark { background: var(--black); }
-    .section-panel { background: #11100d; border-block: 1px solid var(--line); }
-    .section-head { max-width: 760px; margin: 0 auto 52px; text-align: center; }
-    .section-head .eyebrow { justify-content: center; }
-    .section-head h2 { margin: 15px 0 16px; font: 500 clamp(38px,5vw,60px)/1.08 var(--display); letter-spacing: -.035em; }
-    .section-head p { max-width: 650px; margin-inline: auto; color: #716b60; font-size: 14px; }
-    .section-dark .section-head p,.section-panel .section-head p { color: var(--muted); }
-    .hybrid-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 65px; align-items: center; }
-    .hybrid-copy h2 { margin: 16px 0 20px; font: 500 clamp(38px,4.5vw,55px)/1.08 var(--display); letter-spacing: -.03em; }
-    .hybrid-copy p { color: #c7c0b1; }
-    .hybrid-visual { position: relative; min-height: 410px; padding: 30px; border: 1px solid var(--line); background: radial-gradient(circle at 50% 50%,rgba(212,175,55,.12),transparent 57%),linear-gradient(145deg,#1d1a12,#0c0c0a); display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: center; }
-    .mode-card { min-height: 145px; padding: 22px; border: 1px solid rgba(212,175,55,.3); background: rgba(8,8,7,.55); }
-    .mode-number { color: var(--gold); font: 500 28px var(--display); }
-    .mode-card h3 { margin: 9px 0 6px; color: var(--ivory); font: 500 20px var(--display); }
-    .mode-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
-    .capability-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--line); background: var(--line); }
-    .capability { min-height: 225px; padding: 30px; background: #12110e; }
-    .capability .num { color: var(--gold); font: 500 32px var(--display); }
-    .capability h3 { margin: 18px 0 9px; font: 500 23px var(--display); }
-    .capability p { margin: 0; color: var(--muted); font-size: 12px; }
-    .offer-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
-    .offer { position: relative; min-height: 250px; padding: 34px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg,rgba(212,175,55,.09),transparent 55%),var(--panel); }
-    .offer::after { content: ""; position: absolute; width: 190px; height: 190px; right: -90px; bottom: -105px; border: 1px solid rgba(212,175,55,.22); border-radius: 50%; box-shadow: 0 0 0 22px rgba(212,175,55,.025),0 0 0 48px rgba(212,175,55,.02); }
-    .offer h3 { margin: 14px 0 10px; font: 500 29px var(--display); }
-    .offer p { max-width: 440px; margin-bottom: 0; color: var(--muted); font-size: 13px; }
-    .workspace-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
-    .workspace-photo { min-height: 390px; border: 1px solid var(--gold); overflow: hidden; background: #211f1b; }
-    .workspace-photo img { width: 100%; height: 100%; min-height: 390px; object-fit: cover; }
-    .workspace-art { display: grid; place-items: center; padding: 28px; background: radial-gradient(circle at 50% 45%,rgba(212,175,55,.16),transparent 58%),linear-gradient(145deg,#1b1913,#080807); }
-    .workspace-art-inner { width: 100%; max-width: 520px; }
-    .workspace-copy h2 { margin: 16px 0; font: 500 clamp(38px,4.5vw,54px)/1.08 var(--display); }
-    .workspace-copy p { color: var(--muted); }
-    .amenity-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; }
-    .amenity { padding-top: 16px; border-top: 1px solid var(--line); }
-    .amenity strong { display: block; color: var(--gold-light); font: 500 20px var(--display); }
-    .amenity span { color: var(--muted); font-size: 11px; }
-    .closing { padding: 94px 0; text-align: center; background: radial-gradient(ellipse at 50% 0,rgba(212,175,55,.13),transparent 55%),#11100d; border-top: 1px solid var(--line); }
-    .closing h2 { max-width: 780px; margin: 18px auto; font: 500 clamp(40px,5.5vw,64px)/1.05 var(--display); }
-    .closing p { max-width: 580px; margin: 0 auto; color: var(--muted); }
-    .closing .actions { justify-content: center; }
-    .footer { padding: 30px 0; background: #050505; border-top: 1px solid var(--line); }
-    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 25px; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-    .footer-links a,.footer-email { color: #c8c0af; font-size: 11px; text-decoration: none; }
-    .footer-links a:hover,.footer-email:hover { color: var(--gold-light); }
-    .copyright { margin: 9px 0 0; color: #777064; font-size: 9px; }
+    .section-heading { text-align: center; max-width: 730px; margin: 0 auto 46px; }
+    .section-heading .eyebrow { justify-content: center; }
+    .section-heading h2 { font: 500 clamp(35px,4.8vw,55px)/1.08 var(--display); letter-spacing: -.035em; margin: 13px 0 14px; }
+    .section-heading p { margin: 0 auto; max-width: 620px; color: var(--stone); font-size: 12px; line-height: 1.8; }
+    .section-dark .section-heading p, .rental .section-heading p, .services .section-heading p { color: rgba(245,241,230,.68); }
+    .space-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 38px; align-items: stretch; }
+    .room-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; min-width: 0; }
+    .room-photo { margin: 0; position: relative; overflow: hidden; background: #211c13; border: 1px solid var(--gold); }
+    .room-photo-main { grid-column: 1 / -1; }
+    .room-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    .room-photo-main img { aspect-ratio: 3 / 2; }
+    .room-photo figcaption { position: absolute; inset: auto 0 0; padding: 14px 10px 8px; color: white; background: linear-gradient(transparent, rgba(0,0,0,.91)); font-size: 11px; font-weight: 600; }
+    .room-details { display: flex; flex-direction: column; justify-content: center; }
+    .room-details h3 { font: 500 30px/1.15 var(--display); margin-bottom: 10px; }
+    .room-details > p { color: var(--stone); font-size: 11px; line-height: 1.8; }
+    .room-line { display: flex; justify-content: space-between; gap: 15px; padding: 12px 0; border-top: 1px solid rgba(107,101,89,.25); font-size: 10px; }
+    .room-line strong { color: #5d4610; font-weight: 700; }
+    .room-line span { color: var(--stone); text-align: right; }
+    .rental { background: #14120d; border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim); }
+    .price-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--line); }
+    .price-card { padding: 24px 22px 23px; text-align: center; min-height: 180px; background: linear-gradient(160deg,rgba(212,175,55,.055),transparent 54%); }
+    .price-card + .price-card { border-left: 1px solid var(--line); }
+    .price-card .duration { display: block; color: var(--gold-light); font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .price-card strong { display: block; color: var(--ivory); font: 500 44px/1.2 var(--display); margin: 8px 0 8px; }
+    .price-card p { margin: 0; color: rgba(245,241,230,.62); font-size: 9px; line-height: 1.6; }
+    .repeat-note { margin: 18px 0 0; text-align: center; color: var(--gold-light); font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .services { background: #100f0c; }
+    .service-grid { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid var(--line); }
+    .service { padding: 20px 20px 20px 0; min-height: 123px; display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; border-bottom: 1px solid var(--line); }
+    .service:nth-child(even) { padding-left: 22px; border-left: 1px solid var(--line); }
+    .service h3 { font: 500 19px/1.25 var(--display); margin: 0 0 6px; color: var(--ivory); }
+    .service p { color: rgba(245,241,230,.59); font-size: 9px; line-height: 1.6; margin: 0; max-width: 360px; }
+    .service-price { color: var(--gold-light); font: 500 19px/1.2 var(--display); text-align: right; white-space: nowrap; }
+    .service-price small { display: block; margin-top: 5px; color: rgba(245,241,230,.55); font: 600 8px var(--body); letter-spacing: .09em; text-transform: uppercase; }
+    .packages { background: var(--ivory); color: var(--ink); }
+    .package-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; align-items: stretch; }
+    .package { position: relative; padding: 25px 22px 24px; border: 1px solid #a78936; background: #fbf8ef; display: flex; flex-direction: column; min-height: 430px; }
+    .package.featured { background: #11100d; color: var(--ivory); border: 1px solid var(--gold); box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+    .package-label { min-height: 22px; color: var(--stone); font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .package.featured .package-label { color: var(--gold-light); }
+    .package h3 { min-height: 46px; font: 500 19px/1.2 var(--display); margin: 0 0 5px; }
+    .package-price { font: 500 39px/1.15 var(--display); color: #8c6e1e; padding-bottom: 15px; border-bottom: 1px solid rgba(142,113,41,.4); }
+    .package.featured .package-price { color: var(--gold-light); border-color: var(--line); }
+    .package ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; font-size: 9px; line-height: 1.55; }
+    .package li { display: grid; grid-template-columns: 14px 1fr; gap: 7px; }
+    .package li::before { content: "✓"; color: #9a7623; font-weight: 700; }
+    .package.featured li::before { color: var(--gold-light); }
+    .package .button { margin-top: auto; align-self: flex-start; padding: 10px 12px; font-size: 8px; }
+    .package-note { text-align: center; color: var(--stone); font-size: 9px; margin: 23px 0 0; }
+    .closing { position: relative; overflow: hidden; background: radial-gradient(ellipse at 85% 20%,rgba(212,175,55,.12),transparent 38%),#0b0b0b; padding: 80px 0 84px; }
+    .closing-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 8%; align-items: center; }
+    .closing h2 { max-width: 560px; font: 500 clamp(40px,5vw,60px)/1.03 var(--display); letter-spacing: -.04em; margin: 17px 0; }
+    .closing-copy { color: rgba(245,241,230,.67); max-width: 470px; font-size: 11px; }
+    .contact-card { border: 1px solid var(--gold); background: rgba(0,0,0,.42); padding: 23px; }
+    .contact-card label { display: block; color: var(--gold-light); font-size: 8px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 13px; }
+    .contact-card input, .contact-card select, .contact-card textarea { width: 100%; display: block; margin-top: 5px; padding: 10px 11px; background: #171613; color: var(--ivory); border: 1px solid rgba(212,175,55,.31); border-radius: 0; outline: none; font: 16px var(--body); }
+    .contact-card input:focus, .contact-card select:focus, .contact-card textarea:focus { border-color: var(--gold-light); }
+    .contact-card textarea { min-height: 70px; resize: vertical; }
+    .contact-card .button { width: 100%; cursor: pointer; }
+    .contact-card .button + .button { margin-top: 8px; }
+    .contact-note { min-height: 35px; margin: 11px 0 0; color: rgba(245,241,230,.58); font-size: 8px; line-height: 1.55; }
+    .footer { padding: 24px 0; background: #050505; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer .brand-icon { width: 34px; height: 34px; }
+    .footer .brand-name { font-size: 13px; }
+    .footer .brand-tag { font-size: 6px; }
+    .footer-note { margin: 0; color: rgba(245,241,230,.48); font-size: 8px; letter-spacing: .15em; text-align: right; text-transform: uppercase; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+    .skip-link { position: absolute; z-index: 20; top: 12px; left: 12px; padding: 10px 14px; background: var(--ivory); color: var(--ink); transform: translateY(-150%); }
+    .skip-link:focus { transform: translateY(0); }
+    .hero-copy > p, .section-heading p, .room-details > p, .closing-copy { font-size: 15px; }
+    .room-line, .service p, .package ul, .price-card p { font-size: 13px; }
+    .button { min-height: 44px; font-size: 11px; text-align: center; }
+    .package .button, .contact-card label, .contact-note { font-size: 11px; }
+    .package ul { margin-bottom: 20px; }
     @media (max-width: 900px) {
-      .nav { gap: 14px; }
-      .nav a { font-size: 9px; }
-      .hero-grid { gap: 24px; }
-      .hybrid-grid,.workspace-grid { gap: 30px; }
-      .section { padding: 82px 0; }
+      .nav { gap: 13px; font-size: 8px; }
+      .hero-grid { gap: 25px; }
+      .hero-emblem { min-height: 300px; }
+      .space-layout { gap: 24px; }
+      .price-card { padding-inline: 14px; }
+      .package { padding-inline: 16px; }
     }
-    @media (max-width: 700px) {
-      .wrap { width: min(100% - 34px,540px); }
-      .header-row { min-height: 74px; }
-      .brand-mark { width: 37px; height: 37px; }
-      .brand-name { font-size: 18px; }
-      .brand-tag { font-size: 7px; }
-      .menu-toggle { display: inline-flex; }
-      .nav { display: none; position: absolute; top: 73px; left: 0; right: 0; padding: 18px 24px 24px; background: #0b0b09; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 18px; }
-      .nav.is-open { display: flex; }
-      .nav a { font-size: 10px; }
-      .nav .nav-cta { text-align: center; }
-      .hero { min-height: 0; padding: 130px 0 55px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 5px; }
-      h1 { font-size: clamp(49px,13vw,70px); }
-      .hero-copy > p { font-size: 14px; }
-      .hero-art { min-height: 265px; }
-      .orbit { width: 235px; }
-      .orbit.two { width: 200px; }
-      .hero-emblem { width: 165px; }
-      .hero-art-note { right: 3%; bottom: -1px; font-size: 13px; }
-      .intro-strip .wrap { grid-template-columns: 1fr; }
-      .strip-item { padding: 15px; }
-      .strip-item + .strip-item { border-left: 0; border-top: 1px solid var(--line); }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 32px, 500px); }
+      .header-row { height: 78px; gap: 10px; }
+      .brand-icon { width: 39px; height: 39px; }
+      .brand-name { font-size: 16px; }
+      .brand-tag { font-size: 7px; letter-spacing: .1em; white-space: normal; }
+      .nav a:not(.nav-cta) { display: none; }
+      .nav .nav-cta { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 8px; font-size: 9px; white-space: nowrap; }
+      .hero { min-height: auto; padding: 125px 0 49px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 8px; }
+      h1 { font-size: clamp(47px,13vw,68px); }
+      .hero-emblem { min-height: 260px; }
+      .hero-emblem::before { width: 245px; }
+      .hero-emblem::after { width: 215px; }
+      .hero-emblem .brand-icon { width: 175px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .stat { min-height: 67px; justify-content: flex-start; padding: 12px 20px; }
+      .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
+      .stat strong { font-size: 22px; }
+      .stat span { font-size: 7px; }
       .section { padding: 68px 0; }
-      .section-head { margin-bottom: 34px; }
-      .section-head h2 { font-size: 39px; }
-      .hybrid-grid,.workspace-grid { grid-template-columns: 1fr; }
-      .hybrid-visual { min-height: 0; padding: 15px; }
-      .mode-card { min-height: 135px; padding: 16px; }
-      .capability-grid { grid-template-columns: 1fr; }
-      .capability { min-height: 0; padding: 23px; }
-      .offer-grid { grid-template-columns: 1fr; }
-      .offer { min-height: 0; padding: 26px; }
-      .workspace-photo,.workspace-photo img { min-height: 270px; }
-      .workspace-art { min-height: 270px; }
+      .section-heading { margin-bottom: 32px; }
+      .section-heading h2 { font-size: 38px; }
+      .space-layout, .closing-grid { grid-template-columns: 1fr; }
+      .room-details h3 { margin-top: 6px; }
+      .price-grid { grid-template-columns: repeat(2,1fr); }
+      .price-card { min-height: 145px; padding: 19px 12px; }
+      .price-card + .price-card { border-left: 0; }
+      .price-card:nth-child(even) { border-left: 1px solid var(--line); }
+      .price-card:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .price-card strong { font-size: 36px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service, .service:nth-child(even) { padding: 16px 0; border-left: 0; }
+      .service h3 { font-size: 18px; }
+      .package-grid { grid-template-columns: 1fr; }
+      .package { min-height: 0; padding: 22px; }
+      .package h3 { min-height: 0; }
+      .package .button { margin-top: 22px; }
+      .closing { padding: 67px 0; }
+      .contact-card { padding: 18px; }
       .footer-row { align-items: flex-start; flex-direction: column; }
+      .footer-note { text-align: left; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *,*::before,*::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
-  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
-    <symbol id="monad-mark" viewBox="0 0 100 100">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="monad-flower" viewBox="0 0 100 100">
       <g fill="none" stroke="#d4af37" stroke-width="1.25">
-        <circle cx="50" cy="50" r="45"/>
-        <circle cx="50" cy="29" r="21"/><circle cx="68.2" cy="39.5" r="21"/>
-        <circle cx="68.2" cy="60.5" r="21"/><circle cx="50" cy="71" r="21"/>
-        <circle cx="31.8" cy="60.5" r="21"/><circle cx="31.8" cy="39.5" r="21"/>
-        <circle cx="50" cy="50" r="2.7" fill="#f0d77c" stroke="#f0d77c"/>
+        <circle cx="50" cy="50" r="45"/><circle cx="50" cy="29" r="21"/><circle cx="68.2" cy="39.5" r="21"/><circle cx="68.2" cy="60.5" r="21"/><circle cx="50" cy="71" r="21"/><circle cx="31.8" cy="60.5" r="21"/><circle cx="31.8" cy="39.5" r="21"/>
+        <circle cx="50" cy="50" r="2.7" fill="#f4d978" stroke="#f4d978"/>
       </g>
-      <path d="M50 8v84M8 50h84M20.3 20.3l59.4 59.4M79.7 20.3 20.3 79.7" fill="none" stroke="#f0d77c" stroke-width=".65" opacity=".72"/>
+      <path d="M50 8v84M8 50h84M20.3 20.3l59.4 59.4M79.7 20.3 20.3 79.7" fill="none" stroke="#f4d978" stroke-width=".65" opacity=".72"/>
     </symbol>
   </svg>
-
   <header class="site-header">
     <div class="wrap header-row">
       <a class="brand" href="#home" aria-label="Monad Place home">
-        <svg class="brand-mark" aria-hidden="true"><use href="#monad-mark"/></svg>
-        <span class="brand-copy"><span class="brand-name">Monad Place</span><span class="brand-tag">Gather · Create · Connect</span></span>
+        <svg class="brand-icon" aria-hidden="true"><use href="#monad-flower"/></svg>
+        <span class="brand-text"><span class="brand-name">Monad Place</span><span class="brand-tag">Event Space · Media Services · Content Creation</span></span>
       </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-      <nav class="nav" id="primary-nav" aria-label="Main navigation">
-        <a href="#hybrid">The Hybrid Space</a>
-        <a href="#experiences">Experiences</a>
-        <a href="#workspace">Workspace</a>
-        <a class="nav-cta" href="mailto:contact@monadplace.com?subject=Monad%20Place%20Booking%20Inquiry">Request a booking&nbsp; ↗</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#space">The Space</a><a href="#services">Media Services</a><a href="#packages">Packages</a><a class="nav-cta" href="#inquiry">Plan an Event <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </nav>
     </div>
   </header>
-
-  <main id="home">
-    <section class="hero" aria-labelledby="hero-title">
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">A premium space for what brings us together</div>
-          <h1 id="hero-title">One space.<br>Multiple ways to <em>connect.</em></h1>
-          <p>Bring people together in person, welcome participants online, and capture the moments that matter. Monad Place brings gatherings, production, and creative work into one adaptable environment.</p>
-          <div class="actions">
-            <a class="button" href="#hybrid">Discover the space <span aria-hidden="true">↗</span></a>
-            <a class="button secondary" href="mailto:contact@monadplace.com?subject=Plan%20a%20Monad%20Place%20Experience">Plan your experience</a>
+          <div class="eyebrow">Phoenix-area event space &amp; media production</div>
+          <h1 id="hero-title">Gather. Create. <em>Make it matter.</em></h1>
+          <p>Host your next event at Monad Place. Add filming, livestreaming, or editing to share the experience with people who couldn’t be in the room.</p>
+          <div class="hero-actions"><a class="button" href="#inquiry">Plan your event <span class="arrow" aria-hidden="true">&rarr;</span></a><a class="button secondary" href="#space">Explore the space</a></div>
+        </div>
+        <div class="hero-emblem" role="img" aria-label="Monad Place flower emblem in gold"><svg class="brand-icon" aria-hidden="true"><use href="#monad-flower"/></svg></div>
+      </div>
+    </section>
+    <section class="quick-stats" aria-label="Venue overview">
+      <div class="wrap stat-row">
+        <div class="stat"><div><strong>~1,800 sq ft</strong><span>Main event space</span></div></div>
+        <div class="stat"><div><strong>~400 sq ft</strong><span>Kitchen & lounge</span></div></div>
+        <div class="stat"><div><strong>Up to 100</strong><span>75 main space · 25 kitchen area</span></div></div>
+      </div>
+    </section>
+    <section class="section section-light" id="space" aria-labelledby="space-title">
+      <div class="wrap">
+        <div class="section-heading"><div class="eyebrow">The event space</div><h2 id="space-title">Bring people into the room.</h2><p>Host workshops, presentations, and private gatherings in the main event room, with a connected kitchen and lounge for breaks and conversation.</p></div>
+        <div class="space-layout">
+          <div class="room-gallery">
+          <figure class="room-photo room-photo-main">
+            <img src="assets/monad-event-room.webp" width="1280" height="964" loading="lazy" decoding="async" alt="Rows of tables and chairs facing presentation screens in the main event room">
+            <figcaption>Main event space</figcaption>
+          </figure>
+          <figure class="room-photo">
+            <img src="assets/monad-lounge.webp" width="800" height="602" loading="lazy" decoding="async" alt="Round tables and seating beside the glass-walled event room">
+            <figcaption>Lounge seating</figcaption>
+          </figure>
+          <figure class="room-photo">
+            <img src="assets/monad-kitchen.webp" width="800" height="602" loading="lazy" decoding="async" alt="Kitchen with a long counter and bar seating">
+            <figcaption>Kitchen</figcaption>
+          </figure>
+          </div>
+          <div class="room-details">
+            <h3>Space to gather.<br>Tools to capture.</h3>
+            <p>Book the space on its own or pair it with production support. The one-hour rental listing includes event technology and 15 minutes of prep time.</p>
+            <div class="room-line"><strong>Main event space</strong><span>~1,800 sq ft · up to 75 people</span></div>
+            <div class="room-line"><strong>Kitchen & lounge</strong><span>~400 sq ft · up to 25 people</span></div>
+            <div class="room-line"><strong>Total capacity</strong><span>Up to 100 people</span></div>
+            <div class="room-line"><strong>Repeat bookings</strong><span>10% off event space rental</span></div>
           </div>
         </div>
-        <div class="hero-art" role="img" aria-label="Monad Place geometric flower emblem in gold">
-          <span class="orbit"></span><span class="orbit two"></span>
-          <svg class="hero-emblem" aria-hidden="true"><use href="#monad-mark"/></svg>
-          <div class="hero-art-note">Gather in person.<br>Connect beyond the room.</div>
-        </div>
       </div>
     </section>
-
-    <div class="intro-strip" aria-label="Monad Place capabilities">
+    <section class="section rental" id="rental" aria-labelledby="rental-title">
       <div class="wrap">
-        <div class="strip-item"><strong>Gather</strong><span>In-person experiences</span></div>
-        <div class="strip-item"><strong>Connect</strong><span>Online participation</span></div>
-        <div class="strip-item"><strong>Create</strong><span>Recording & livestreaming</span></div>
-      </div>
-    </div>
-
-    <section class="section section-dark" id="hybrid" aria-labelledby="hybrid-title">
-      <div class="wrap hybrid-grid">
-        <div class="hybrid-copy">
-          <div class="eyebrow">The hybrid space</div>
-          <h2 id="hybrid-title">More than a room. A connected experience.</h2>
-          <p>The main room can be arranged around the experience you want to create—whether that means bringing a group together, including people joining remotely, recording a conversation, or sharing an event live.</p>
-          <p>One adaptable environment. Different ways to bring your people, ideas, and content together.</p>
-          <a class="button secondary" href="mailto:contact@monadplace.com?subject=Hybrid%20Space%20Inquiry">Ask about the space&nbsp; ↗</a>
-        </div>
-        <div class="hybrid-visual" aria-label="Three ways to use the hybrid space">
-          <article class="mode-card"><span class="mode-number">01</span><h3>In person</h3><p>Bring your group together in the room.</p></article>
-          <article class="mode-card"><span class="mode-number">02</span><h3>Online</h3><p>Include people participating remotely.</p></article>
-          <article class="mode-card"><span class="mode-number">03</span><h3>Recorded</h3><p>Capture conversations, presentations, and moments.</p></article>
-          <article class="mode-card"><span class="mode-number">04</span><h3>Live</h3><p>Share your experience through livestreaming.</p></article>
+        <div class="section-heading"><div class="eyebrow">Event space rental</div><h2 id="rental-title">Choose the time that fits.</h2><p>Compare rental options for your event.</p></div>
+        <div class="price-grid">
+          <article class="price-card"><span class="duration">1 hour</span><strong>$99</strong><p>Includes tech<br>and 15 min prep</p></article>
+          <article class="price-card"><span class="duration">4 hours</span><strong>$579</strong><p>Space for a focused<br>gathering or session</p></article>
+          <article class="price-card"><span class="duration">8 hours</span><strong>$999</strong><p>Room for a full<br>event day</p></article>
+          <article class="price-card"><span class="duration">Repeat bookings</span><strong>10% off</strong><p>Discount applies<br>to event space rental</p></article>
         </div>
       </div>
     </section>
-
-    <section class="section section-panel" id="experiences" aria-labelledby="experiences-title">
+    <section class="section services" id="services" aria-labelledby="services-title">
       <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">What you can do here</div>
-          <h2 id="experiences-title">A space that works around your ideas.</h2>
-          <p>From meaningful gatherings to creative production, explore the ways Monad Place can support your next experience.</p>
-        </div>
-        <div class="capability-grid">
-          <article class="capability"><span class="num">01</span><h3>Event space rentals</h3><p>Host gatherings, presentations, workshops, and experiences in a flexible main room.</p></article>
-          <article class="capability"><span class="num">02</span><h3>Media production</h3><p>Develop and capture video, interviews, presentations, and branded content.</p></article>
-          <article class="capability"><span class="num">03</span><h3>Livestreaming & content</h3><p>Bring remote audiences into the experience and create content that can keep working afterward.</p></article>
+        <div class="section-heading"><div class="eyebrow">Video & content services</div><h2 id="services-title">Keep the story moving after the event.</h2><p>Book filming, editing, or livestreaming on its own, or combine services to cover your event from setup through final edits.</p></div>
+        <div class="service-grid">
+          <article class="service"><div><h3>Cinematic filming</h3><p>Camera, technician, lighting, and gimbal.</p></div><div class="service-price">$150<small>per hour</small></div></article>
+          <article class="service"><div><h3>Installed room cameras</h3><p>Two built-in cameras for full event capture.</p></div><div class="service-price">$160 / $300<small>4 hours / 8 hours</small></div></article>
+          <article class="service"><div><h3>Basic editing</h3><p>30 audio-chop clips.</p></div><div class="service-price">$199</div></article>
+          <article class="service"><div><h3>Advanced editing</h3><p>30 clips with graphics and custom branding.</p></div><div class="service-price">$499</div></article>
+          <article class="service"><div><h3>Livestreaming</h3><p>Multi-platform professional setup.</p></div><div class="service-price">$800<small>per day</small></div></article>
+          <article class="service"><div><h3>Social posting package</h3><p>Posting, captions, and formatting.</p></div><div class="service-price">$299</div></article>
+          <article class="service"><div><h3>Case study / testimonial edit</h3><p>A branded 2–3 minute story.</p></div><div class="service-price">$1,500</div></article>
         </div>
       </div>
     </section>
-
-    <section class="section section-dark" aria-labelledby="possibilities-title">
+    <section class="section packages" id="packages" aria-labelledby="packages-title">
       <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Designed for flexibility</div>
-          <h2 id="possibilities-title">One gathering. More possibilities.</h2>
-          <p>Imagine a workshop with people in the room and online, a presentation that is recorded, or a live conversation that becomes future content.</p>
+        <div class="section-heading"><div class="eyebrow">Full-service event production</div><h2 id="packages-title">One event. A complete story.</h2><p>Each package combines the space, event technology, recording, and edited content at a different production scale.</p></div>
+        <div class="package-grid">
+          <article class="package">
+            <div class="package-label">Essential</div><h3>Essential Event Package</h3><div class="package-price">$2,475</div>
+            <ul><li>Event space up to 8 hours</li><li>Event technician and AV setup</li><li>Two-camera event recording (raw footage)</li><li>60–90 second highlight video</li><li>10 edited social media clips</li></ul>
+            <a class="button" href="#inquiry">Ask about Essential</a>
+          </article>
+          <article class="package">
+            <div class="package-label">Content expansion</div><h3>Content Expansion Package</h3><div class="package-price">$3,975</div>
+            <ul><li>Event space up to 8 hours</li><li>Event technician and AV setup</li><li>Two-camera event recording</li><li>Full edited coverage of each day (up to 4 days)</li><li>60–90 second highlight video</li><li>60 edited social media clips</li></ul>
+            <a class="button" href="#inquiry">Ask about Content Expansion</a>
+          </article>
+          <article class="package featured">
+            <div class="package-label">Premier · Most value</div><h3>Premier Production Package</h3><div class="package-price">$5,999</div>
+            <ul><li>Event space up to 8 hours</li><li>Event technician and AV setup</li><li>Two-camera event recording</li><li>Full edited coverage of each day (up to 4 days)</li><li>100 edited social media clips</li><li>Three scripted, ad-ready commercial edits: 60, 30, and 15 seconds</li><li>Social posting and content delivery</li></ul>
+            <a class="button" href="#inquiry">Ask about Premier</a>
+          </article>
         </div>
-        <div class="offer-grid">
-          <article class="offer"><div class="eyebrow">Bring people together</div><h3>Events & shared experiences</h3><p>Create room for conversations, learning, collaboration, celebrations, and community.</p></article>
-          <article class="offer"><div class="eyebrow">Make ideas visible</div><h3>Production & storytelling</h3><p>Turn a live moment, message, or conversation into video and digital content.</p></article>
-        </div>
+        <p class="package-note">Package rates and inclusions are presented as provided. Confirm scheduling and production details during booking.</p>
       </div>
     </section>
-
-    <section class="section section-panel" id="workspace" aria-labelledby="workspace-title">
-      <div class="wrap workspace-grid">
-        <div class="workspace-photo workspace-art" role="img" aria-label="Abstract gold line artwork representing a collaborative workspace">
-          <div class="workspace-art-inner">
-            <svg viewBox="0 0 520 390" aria-hidden="true">
-              <g fill="none" stroke="#d4af37" stroke-width="1.3" opacity=".8">
-                <path d="M42 300 260 170 478 300M82 323 260 217 438 323M120 345 260 264 400 345"/>
-                <path d="M110 140h300v120H110zM145 140v-48h230v48M260 92v-48"/>
-                <path d="M185 260v-62h150v62M205 198v-28h110v28"/>
-                <circle cx="260" cy="92" r="32"/><circle cx="260" cy="92" r="19"/>
-                <path d="M70 350h380M95 370h330"/>
-              </g>
-              <g fill="#f0d77c" font-family="Georgia,serif" text-anchor="middle">
-                <text x="260" y="355" font-size="18" letter-spacing="4">SPACE TO CONNECT</text>
-              </g>
-            </svg>
-          </div>
-        </div>
-        <div class="workspace-copy">
-          <div class="eyebrow">Work, reset, connect</div>
-          <h2 id="workspace-title">A place to do your best work.</h2>
-          <p>Monad Place also offers a shared workspace for people who value a professional environment and the energy of working alongside others.</p>
-          <div class="amenity-row">
-            <div class="amenity"><strong>Kitchen</strong><span>A practical amenity for the day.</span></div>
-            <div class="amenity"><strong>Lounge</strong><span>A place to pause and recharge.</span></div>
-          </div>
-          <div class="actions"><a class="button secondary" href="mailto:contact@monadplace.com?subject=Shared%20Workspace%20Inquiry">Ask about workspace&nbsp; ↗</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing" aria-labelledby="closing-title">
-      <div class="wrap">
-        <div class="eyebrow" style="justify-content:center">Start a conversation</div>
-        <h2 id="closing-title">What would you like to bring to life?</h2>
-        <p>Tell us what you have in mind. We’ll help you explore how Monad Place can support your gathering, production, or workspace needs.</p>
-        <div class="actions"><a class="button" href="mailto:contact@monadplace.com?subject=Monad%20Place%20Inquiry">Contact Monad Place&nbsp; ↗</a></div>
+    <section class="closing" id="inquiry" aria-labelledby="inquiry-title">
+      <div class="wrap closing-grid">
+        <div><div class="eyebrow">Plan your gathering</div><h2 id="inquiry-title">Tell us about your event.</h2><p class="closing-copy">Share your preferred date, guest count, and any production needs. We’ll put those details into an email draft addressed to <a href="mailto:contact@monadplace.com">contact@monadplace.com</a>. Review your message and send it from your email app.</p></div>
+        <form class="contact-card" id="inquiry-form">
+          <label>Your name<input name="name" autocomplete="name" required placeholder="Name"></label>
+          <label>Your email<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+          <label>What are you planning?
+            <select name="request" required><option value="" disabled selected>Choose a service</option><option>Event space rental</option><option>Video or media service</option><option>Full-service production package</option><option>Not sure yet</option></select>
+          </label>
+          <label>Tell us a little more<textarea name="details" required placeholder="Date, group size, and what you have in mind"></textarea></label>
+          <button class="button" type="submit">Email Monad Place <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          <button class="button secondary" id="copy-inquiry" type="button">Copy inquiry instead</button>
+          <p class="contact-note" id="contact-note" aria-live="polite">Send the draft from your email app to request availability.</p>
+        </form>
       </div>
     </section>
   </main>
-
   <footer class="footer">
     <div class="wrap footer-row">
-      <div>
-        <a class="brand" href="#home">
-          <svg class="brand-mark" aria-hidden="true"><use href="#monad-mark"/></svg>
-          <span class="brand-copy"><span class="brand-name">Monad Place</span><span class="brand-tag">Gather · Create · Connect</span></span>
-        </a>
-        <p class="copyright">© <span id="year">2026</span> Monad Place. All rights reserved.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#hybrid">The Hybrid Space</a><a href="#experiences">Experiences</a><a href="#workspace">Workspace</a>
-        <a class="footer-email" href="mailto:contact@monadplace.com">contact@monadplace.com</a>
-      </div>
+      <a class="brand" href="#home" aria-label="Monad Place home"><svg class="brand-icon" aria-hidden="true"><use href="#monad-flower"/></svg><span class="brand-text"><span class="brand-name">Monad Place</span><span class="brand-tag">Event Space · Media Services · Content Creation</span></span></a>
+      <p class="footer-note"><a href="mailto:contact@monadplace.com">contact@monadplace.com</a></p>
     </div>
   </footer>
-
   <script>
-    const menuButton = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("#primary-nav");
-    menuButton.addEventListener("click", () => {
-      const expanded = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", String(!expanded));
-      nav.classList.toggle("is-open", !expanded);
+    const form = document.querySelector('#inquiry-form');
+    const note = document.querySelector('#contact-note');
+    const copyButton = document.querySelector('#copy-inquiry');
+    function inquiryDraft() {
+      const values = new FormData(form);
+      return `Monad Place inquiry\n\nName: ${values.get('name')}\nEmail: ${values.get('email')}\nService: ${values.get('request')}\n\nDetails:\n${values.get('details')}`;
+    }
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const subject = 'Monad Place inquiry — ' + new FormData(form).get('request');
+      const mailto = `mailto:contact@monadplace.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(inquiryDraft())}`;
+      note.textContent = 'Your email app should open with the inquiry addressed to contact@monadplace.com. Review it and send when ready.';
+      window.location.href = mailto;
     });
-    nav.addEventListener("click", (event) => {
-      if (event.target.closest("a")) {
-        nav.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
+    copyButton.addEventListener('click', async () => {
+      if (!form.reportValidity()) return;
+      try {
+        await navigator.clipboard.writeText(inquiryDraft());
+        note.textContent = 'Inquiry copied. Paste it into a message to contact@monadplace.com.';
+      } catch {
+        note.textContent = 'This browser could not copy the inquiry. Please copy your notes manually.';
       }
     });
-    document.querySelector("#year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
