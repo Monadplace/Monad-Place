@@ -1,28 +1,13 @@
-# Monad Place homepage — development preview
+# Monad Place website
 
-This is a first-pass homepage prototype for review. It is a static HTML/CSS/JS page and requires no build step.
+Static HTML website for Monad Place.
 
-## Preview locally
-Open `index.html` in a browser. For a local server, run `python3 -m http.server 8000` from this directory and visit `http://localhost:8000`.
+## Pages
+- `index.html`: public homepage.
+- `mac-6/index.html`: unlisted booking request page with HubSpot and Google Calendar. Not password-protected; do not publish private calendar details.
+- `assets/`: website assets.
 
-## Included
-- Premium black / gold / ivory visual direction
-- Responsive desktop and mobile navigation
-- Hybrid-space positioning: in-person, online, recorded, livestreamed
-- Event rentals, media production, livestreaming/content, and shared workspace sections
-- Kitchen and lounge presented as amenities
-- Custom inline SVG artwork in the workspace section (ready to replace with approved photography)
-- Basic page metadata, semantic sections, keyboard focus styles, and reduced-motion support
+## Deployment
+GitHub Actions workflow `.github/workflows/static.yml` packages only the current website files and deploys to GitHub Pages on pushes to `main`. Set Settings > Pages > Source to GitHub Actions. The `website-redesign` branch is for development; do not merge until approved. Verify hosting eligibility before switching the custom domain. Keep Netlify active until the replacement is tested. Configure the custom domain in Pages settings and update only web DNS records at cutover; preserve mail records.
 
-## Not connected yet
-- Inquiry buttons currently open an email draft to contact@monadplace.com. No form submissions are stored.
-- No prices, capacity figures, or equipment specifications are published because these details need confirmation.
-- This preview has not been connected to GitHub or deployed to Netlify. It does not change the live website.
-- Replace the abstract workspace artwork with approved Monad Place photography before launch.
-
-## Next production steps
-1. Review and approve the positioning, sections, photo, and visual direction.
-2. Confirm factual venue details, service scope, and approved photography.
-3. Audit the Netlify/GitHub relationship and CRM form setup.
-4. Build the remaining sitemap pages and connect the approved inquiry workflow.
-5. Test accessibility, mobile behavior, SEO, and deployment previews before production release.
+The legacy `monad-place-static-site/` directory is retained in source history but excluded from the deployment artifact.
