@@ -45,10 +45,12 @@ jobs:
           import os
           from html import escape
           from pathlib import Path
+          from urllib.parse import urlsplit, urlunsplit
 
-          base_url = os.environ['PAGES_BASE_URL'].rstrip('/')
-          if not base_url.startswith('https://'):
-              raise SystemExit('Expected an HTTPS GitHub Pages base URL')
+          parts = urlsplit(os.environ['PAGES_BASE_URL'])
+          if parts.scheme not in ('http', 'https') or not parts.hostname:
+              raise SystemExit('Expected a valid GitHub Pages base URL')
+          base_url = urlunsplit(parts._replace(scheme='https')).rstrip('/')
           for route in ('index.html', 'articles/index.html', 'events/index.html'):
               page = Path('_site') / route
               page.write_text(page.read_text().replace('https://monadplace.github.io/Monad-Place', escape(base_url, quote=True)))
