@@ -1,0 +1,46 @@
+:root { --community-gold: #e4bf60; --community-ivory: #f5f1e6; }
+.community-banner {
+  background-color: #21180e;
+  background-image: linear-gradient(90deg, #171009 0%, #171009 29%, rgba(23,16,9,.96) 49%, rgba(23,16,9,.58) 75%, rgba(23,16,9,.64) 100%), var(--event-art, none);
+  background-position: center, right var(--event-art-position, 65%);
+  background-repeat: no-repeat;
+  background-size: cover, max(56%, 440px) auto;
+ color: var(--community-ivory); border-top: 1px solid #61502b; }
+.community-banner-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 32px; min-height: 200px; }
+.community-banner h2 { margin: 0 0 4px; font: 500 clamp(24px,4vw,36px)/1.15 "Playfair Display", Georgia, serif; }
+.community-banner p { margin: 0; }
+.community-kicker { color: var(--community-gold); font-size: .73rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+.community-banner .community-kicker { margin-bottom: 7px; }
+.community-actions { display: grid; justify-items: center; gap: 8px; flex-shrink: 0; }
+.rotation { display: flex; gap: 6px; }
+.rotation[hidden] { display: none; }
+.rotation button { min-height: 44px; min-width: 44px; padding: 4px 10px; border: 1px solid #a28651; border-radius: 2px; color: inherit; background: transparent; cursor: pointer; }
+.community-footer { display: flex; flex-wrap: wrap; gap: 16px; }
+.community-page { margin: 0; background: #100e0b; color: var(--community-ivory); font: 15px/1.65 Montserrat, Arial, sans-serif; }
+.community-page * { box-sizing: border-box; }
+.community-page a { color: var(--community-gold); }
+.community-page :focus-visible, .rotation :focus-visible { outline: 2px solid var(--community-gold); outline-offset: 4px; }
+.community-shell { width: min(1080px, calc(100% - 36px)); margin-inline: auto; }
+.community-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; padding-block: 20px; border-bottom: 1px solid #554428; }
+.community-nav a:first-child { margin-right: auto; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; }
+.community-page h1, .community-page h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; line-height: 1.13; }
+.community-page h1 { font-size: clamp(42px,7vw,74px); margin: 0 0 14px; }
+.community-intro { padding-block: clamp(32px,7vw,80px) 32px; max-width: 680px; }
+.community-intro > p { margin: 0; }
+.community-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; padding-bottom: 60px; }
+.community-card { min-width: 0; overflow: hidden; border: 1px solid #61502b; background: #1b1710; }
+.community-card img { display: block; width: 100%; height: auto; }
+.community-card-copy { padding: clamp(18px,3vw,30px); }
+.community-card-copy h2 { font-size: 29px; margin: 8px 0 12px; }
+.community-card-copy p:last-child { margin-bottom: 0; }
+.community-card-copy summary { cursor: pointer; color: var(--community-gold); }
+@media (max-width: 850px) { .site-header .nav a:not(.nav-cta) { display: none; } }
+@media (max-width: 650px) {
+  .community-banner {
+    background-image: linear-gradient(90deg, rgba(23,16,9,.97), rgba(23,16,9,.73)), var(--event-art, none);
+    background-size: cover;
+  }
+  .community-banner-inner { flex-direction: column; align-items: flex-start; }
+  .community-actions { justify-items: start; flex-shrink: 1; }
+  .community-grid { grid-template-columns: 1fr; }
+}

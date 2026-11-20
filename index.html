@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="assets/community.css">
+  <script defer src="assets/events-data.js"></script>
+  <script defer src="assets/events.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0b0b">
@@ -226,6 +229,7 @@
         <span class="brand-text"><span class="brand-name">Monad Place</span><span class="brand-tag">Event Space · Media Services · Content Creation</span></span>
       </a>
       <nav class="nav" aria-label="Main navigation">
+        <a href="articles/">Articles</a><a href="events/">Community Events</a>
         <a href="#space">The Space</a><a href="#services">Media Services</a><a href="#packages">Packages</a><a class="nav-cta" href="#inquiry">Plan an Event <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </nav>
     </div>
@@ -240,6 +244,24 @@
           <div class="hero-actions"><a class="button" href="#inquiry">Plan your event <span class="arrow" aria-hidden="true">&rarr;</span></a><a class="button secondary" href="#space">Explore the space</a></div>
         </div>
         <div class="hero-emblem" role="img" aria-label="Monad Place flower emblem in gold"><svg class="brand-icon" aria-hidden="true"><use href="#monad-flower"/></svg></div>
+      </div>
+    </section>
+    <section class="community-banner" aria-labelledby="community-banner-title">
+      <div class="wrap community-banner-inner">
+        <div>
+          <p class="community-kicker">Community events</p>
+          <h2 id="community-banner-title" data-banner-title>See what’s happening at Monad Place</h2>
+          <p data-banner-details>Explore gatherings open to the public.</p>
+        </div>
+        <div class="community-actions">
+          <a class="button" href="events/" data-banner-link>Explore community events</a>
+          <div class="rotation" data-rotation hidden>
+            <button type="button" data-prev aria-label="Previous event">←</button>
+            <button type="button" data-pause>Pause</button>
+            <button type="button" data-next aria-label="Next event">→</button>
+          </div>
+          <p class="sr-only" role="status" data-rotation-status></p>
+        </div>
       </div>
     </section>
     <section class="quick-stats" aria-label="Venue overview">
@@ -346,6 +368,7 @@
   <footer class="footer">
     <div class="wrap footer-row">
       <a class="brand" href="#home" aria-label="Monad Place home"><svg class="brand-icon" aria-hidden="true"><use href="#monad-flower"/></svg><span class="brand-text"><span class="brand-name">Monad Place</span><span class="brand-tag">Event Space · Media Services · Content Creation</span></span></a>
+      <nav class="community-footer" aria-label="More from Monad Place"><a href="articles/">Articles</a><a href="events/">Community Events</a></nav>
       <p class="footer-note"><a href="mailto:contact@monadplace.com">contact@monadplace.com</a></p>
     </div>
   </footer>
