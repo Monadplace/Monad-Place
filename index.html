@@ -40,17 +40,6 @@
     a { color: inherit; }
     button, input, select, textarea { font: inherit; }
     .wrap { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
-    .site-header { position: absolute; z-index: 10; inset: 0 0 auto; border-bottom: 1px solid rgba(212,175,55,.45); background: linear-gradient(180deg, rgba(0,0,0,.88), rgba(0,0,0,.18)); }
-    .header-row { height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; min-width: 0; }
-    .brand-icon { display: block; width: 50px; height: 50px; flex: 0 0 auto; filter: drop-shadow(0 0 8px rgba(212,175,55,.54)); }
-    .brand-text { display: grid; line-height: 1.2; }
-    .brand-name { font: 600 21px/1.1 var(--display); letter-spacing: .13em; color: var(--gold-light); white-space: nowrap; }
-    .brand-tag { font-size: 8px; letter-spacing: .23em; color: var(--ivory); text-transform: uppercase; margin-top: 6px; white-space: nowrap; }
-    .nav { display: flex; align-items: center; gap: 24px; font-size: 10px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
-    .nav a { text-decoration: none; color: rgba(245,241,230,.84); transition: color .18s; }
-    .nav a:hover { color: var(--gold-light); }
-    .nav .nav-cta { padding: 10px 16px; border: 1px solid var(--gold); border-radius: 2px; color: var(--gold-light); }
     .hero { min-height: 650px; padding: 150px 0 70px; position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 76% 34%, rgba(142,113,41,.17), transparent 35%), linear-gradient(120deg,#080807 15%, #15120b 57%, #090908 100%); }
     .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .18; background: repeating-linear-gradient(137deg, transparent 0 130px, rgba(212,175,55,.2) 131px, transparent 132px 240px); mask-image: linear-gradient(110deg, transparent 40%, #000 100%); }
     .hero::after { content: ""; position: absolute; z-index: -1; width: 560px; height: 560px; border: 1px solid rgba(212,175,55,.22); border-radius: 50%; right: -190px; top: 6px; box-shadow: 0 0 0 35px rgba(212,175,55,.035), 0 0 0 76px rgba(212,175,55,.025), 0 0 0 125px rgba(212,175,55,.018); }
@@ -66,8 +55,6 @@
     .button:hover { background: var(--gold-light); transform: translateY(-2px); }
     .button.secondary { background: transparent; color: var(--gold-light); }
     .button.secondary:hover { color: var(--black); background: var(--gold-light); }
-    .arrow { font-size: 15px; line-height: .7; }
-    .arrow { display: inline-block; transform: rotate(-45deg); }
     .hero-emblem { position: relative; display: grid; place-items: center; min-height: 370px; }
     .hero-emblem::before, .hero-emblem::after { content: ""; position: absolute; width: min(31vw, 335px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(212,175,55,.48); transform: rotate(30deg) scaleY(.9); box-shadow: 0 0 45px rgba(212,175,55,.08), inset 0 0 45px rgba(212,175,55,.06); }
     .hero-emblem::after { width: min(27vw, 295px); transform: rotate(-30deg) scaleY(.78); border-color: rgba(244,217,120,.33); }
@@ -160,7 +147,6 @@
     .package .button, .contact-card label, .contact-note { font-size: 11px; }
     .package ul { margin-bottom: 20px; }
     @media (max-width: 900px) {
-      .nav { gap: 13px; font-size: 8px; }
       .hero-grid { gap: 25px; }
       .hero-emblem { min-height: 300px; }
       .space-layout { gap: 24px; }
@@ -169,12 +155,6 @@
     }
     @media (max-width: 680px) {
       .wrap { width: min(100% - 32px, 500px); }
-      .header-row { height: 78px; gap: 10px; }
-      .brand-icon { width: 39px; height: 39px; }
-      .brand-name { font-size: 16px; }
-      .brand-tag { font-size: 7px; letter-spacing: .1em; white-space: normal; }
-      .nav a:not(.nav-cta) { display: none; }
-      .nav .nav-cta { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 8px; font-size: 9px; white-space: nowrap; }
       .hero { min-height: auto; padding: 125px 0 49px; }
       .hero-grid { grid-template-columns: 1fr; gap: 8px; }
       h1 { font-size: clamp(47px,13vw,68px); }
@@ -214,6 +194,7 @@
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Monad Place","url":"https://monadplace.github.io/Monad-Place/","email":"contact@monadplace.com","sameAs":["https://www.facebook.com/profile.php?id=61597042102422"]}</script>
   <link rel="icon" type="image/svg+xml" sizes="any" href="assets/monad-favicon.svg">
+  <link rel="stylesheet" href="assets/site-header.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
