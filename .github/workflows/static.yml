@@ -44,6 +44,7 @@ jobs:
           python3 - <<'PY'
           import os
           from html import escape
+          from xml.etree.ElementTree import Element, SubElement, ElementTree
           from pathlib import Path
           from urllib.parse import urlsplit, urlunsplit
 
@@ -51,9 +52,14 @@ jobs:
           if parts.scheme not in ('http', 'https') or not parts.hostname:
               raise SystemExit('Expected a valid GitHub Pages base URL')
           base_url = urlunsplit(parts._replace(scheme='https')).rstrip('/')
-          for route in ('index.html', 'articles/index.html', 'events/index.html'):
+          routes = {'': 'index.html', 'articles/': 'articles/index.html', 'events/': 'events/index.html'}
+          sitemap = Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+          for slug, route in routes.items():
               page = Path('_site') / route
               page.write_text(page.read_text().replace('https://monadplace.github.io/Monad-Place', escape(base_url, quote=True)))
+              SubElement(SubElement(sitemap, 'url'), 'loc').text = f'{base_url}/{slug}'
+          ElementTree(sitemap).write('_site/sitemap.xml', encoding='utf-8', xml_declaration=True)
+          (Path('_site') / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {base_url}/sitemap.xml\n')
           PY
           if [ -f CNAME ]; then cp CNAME _site/; fi
       - name: Upload artifact
