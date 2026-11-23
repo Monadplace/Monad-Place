@@ -147,6 +147,8 @@
     .footer .brand-icon { width: 34px; height: 34px; }
     .footer .brand-name { font-size: 13px; }
     .footer .brand-tag { font-size: 6px; }
+    .footer-facebook { display: inline-grid; place-items: center; width: 44px; height: 44px; color: var(--gold-light); border: 1px solid var(--line); border-radius: 50%; }
+    .footer-facebook:hover { background: var(--gold-light); color: var(--black); }
     .footer-note { margin: 0; color: rgba(245,241,230,.48); font-size: 8px; letter-spacing: .15em; text-align: right; text-transform: uppercase; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
@@ -369,6 +371,9 @@
     <div class="wrap footer-row">
       <a class="brand" href="#home" aria-label="Monad Place home"><svg class="brand-icon" aria-hidden="true"><use href="#monad-flower"/></svg><span class="brand-text"><span class="brand-name">Monad Place</span><span class="brand-tag">Event Space · Media Services · Content Creation</span></span></a>
       <nav class="community-footer" aria-label="More from Monad Place"><a href="articles/">Articles</a><a href="events/">Community Events</a></nav>
+      <a href="https://www.facebook.com/profile.php?id=61597042102422" aria-label="Monad Place on Facebook" class="footer-facebook">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.5-3.9 3.78-3.9 1.1 0 2.25.2 2.25.2v2.47H15.2c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>
+      </a>
       <p class="footer-note"><a href="mailto:contact@monadplace.com">contact@monadplace.com</a></p>
     </div>
   </footer>
