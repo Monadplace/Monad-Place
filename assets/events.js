@@ -45,6 +45,7 @@
     list.replaceChildren();
     if (!cards.length) list.append(element("p", "Check back for the next public event."));
     for (const event of cards) {
+      const card = element("article", null, "hosted-event");
       const row = element("details", null, "event-row");
       row.id = event.id;
       const summary = element("summary");
@@ -59,7 +60,7 @@
         flyer.width = 800;
         flyer.height = 1000;
         flyer.loading = "lazy";
-        copy.prepend(flyer);
+        card.append(flyer);
       }
       if (event.price) copy.append(element("p", event.price));
       if (/^https:\/\//i.test(event.registrationUrl || "")) {
@@ -69,7 +70,8 @@
         copy.append(registration);
       }
       row.append(summary, copy);
-      list.append(row);
+      card.append(row);
+      list.append(card);
       dateLabels.set(event.id, dateLabel);
     }
 
