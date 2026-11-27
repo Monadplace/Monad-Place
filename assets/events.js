@@ -38,16 +38,24 @@
 
   const list = document.querySelector("[data-event-list]");
   if (list) {
-    const cards = events.filter(event => event.visibility === "public" && !event.clientHosted);
+    const upcoming = eligible();
+    const cards = [...upcoming, ...events.filter(event => event.visibility === "public"
+      && !event.clientHosted && !upcoming.some(next => next.id === event.id))];
+    const filters = [...document.querySelectorAll("[data-event-filter]")];
+    const listings = new Map();
+    const empty = element("p", null, "event-empty");
+    empty.setAttribute("role", "status");
+    let view = "featured";
     const dateLabels = new Map();
     const registrationLinks = new Map();
 
     list.replaceChildren();
-    if (!cards.length) list.append(element("p", "Check back for the next public event."));
+
     for (const event of cards) {
       const card = element("article", null, "hosted-event");
       const row = element("details", null, "event-row");
-      row.id = event.id;
+      card.id = event.id;
+      listings.set(event.id, { card, row, event });
       const summary = element("summary");
       const dateLabel = element("span", null, "event-next-date");
       summary.append(element("strong", event.title), dateLabel);
@@ -58,13 +66,13 @@
         flyer.src = "../assets/" + event.poster;
         flyer.alt = event.title + " flyer";
         flyer.width = 800;
-        flyer.height = 1000;
+        flyer.height = event.posterHeight || 1000;
         flyer.loading = "lazy";
         card.append(flyer);
       }
       if (event.price) copy.append(element("p", event.price));
       if (/^https:\/\//i.test(event.registrationUrl || "")) {
-        const registration = element("a", "Registration details");
+        const registration = element("a", event.clientHosted ? "View event details and sign up" : "Registration details");
         registration.href = event.registrationUrl;
         registrationLinks.set(event.id, registration);
         copy.append(registration);
@@ -75,24 +83,40 @@
       dateLabels.set(event.id, dateLabel);
     }
 
-    const clientListings = document.querySelectorAll('[data-event-end]');
+    list.append(empty);
+    for (const filter of filters) filter.addEventListener("click", () => selectView(filter.dataset.eventFilter));
+
+    function selectView(nextView) {
+      view = nextView;
+      for (const filter of filters) filter.setAttribute("aria-pressed", String(filter.dataset.eventFilter === view));
+      updateDates();
+    }
     function updateDates() {
-      for (const listing of clientListings) listing.hidden = Date.parse(listing.dataset.eventEnd) <= Date.now();
+      let visible = 0;
       const upcoming = new Map(eligible().map(event => [event.id, event]));
       for (const [id, label] of dateLabels) {
         const next = upcoming.get(id);
-        const text = next?.start ? "Next: " + timing(next) : "Next date to be announced";
+        const { card, event } = listings.get(id);
+        const matches = view === "featured" ? event.featured && !!next
+          : view === "clients" ? event.clientHosted && !!next : !event.clientHosted;
+        card.hidden = !matches;
+        if (matches) visible++;
+        const text = next?.start ? (event.clientHosted ? "" : "Next: ") + timing(next) : "Next date to be announced";
         if (label.textContent !== text) label.textContent = text;
         const registration = registrationLinks.get(id);
         if (registration) registration.hidden = !next?.start;
       }
+      empty.hidden = visible > 0;
+      empty.textContent = visible ? "" : "Check back for upcoming " + (view === "clients" ? "client events." : "events.");
     }
 
     function openLinkedEvent() {
-      const row = document.getElementById(location.hash.slice(1));
-      if (row?.matches("details.event-row")) {
-        row.open = true;
-        row.scrollIntoView();
+      const listing = listings.get(location.hash.slice(1));
+      if (!listing) return;
+      if (listing.card.hidden) selectView(listing.event.clientHosted ? "clients" : "monad");
+      if (!listing.card.hidden) {
+        listing.row.open = true;
+        listing.card.scrollIntoView();
       }
     }
 

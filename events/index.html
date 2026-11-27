@@ -8,8 +8,8 @@
   <title>Phoenix-Area Community Events | Monad Place</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap">
   <link rel="stylesheet" href="../assets/community.css">
-  <script defer src="../assets/events-data.js"></script>
-  <script defer src="../assets/events.js?v=441c8035b49f"></script>
+  <script defer src="../assets/events-data.js?v=event-views-1"></script>
+  <script defer src="../assets/events.js?v=event-views-1"></script>
   <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/monad-favicon.svg">
   <link rel="stylesheet" href="../assets/site-header.css">
   <style>
@@ -25,17 +25,11 @@
     .hosted-event > .event-flyer { margin-inline: auto; }
       .community-intro { padding-block: clamp(24px, 4vw, 48px) 18px; }
     .event-section-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .event-section-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 12px; border: 1px solid #61502b; text-decoration: none; }
-    .event-sections { display: grid; gap: 24px; }
-    .event-sections section { min-width: 0; }
-    .event-sections h2 { margin-block: 0 8px; scroll-margin-top: 16px; }
-    .event-sections section > p { margin-block: 0 12px; }
-    .event-sections [data-event-list] { margin-block: 12px 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
-    .event-sections .event-flyer { width: min(100%, 220px); margin-bottom: 10px; }
-    .event-sections .community-grid { grid-template-columns: 1fr; padding-bottom: 24px; }
-    @media (min-width: 900px) {
-      .event-sections { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: start; }
-    }
+    .event-section-links button { min-height: 44px; padding: 6px 14px; border: 1px solid #61502b; color: var(--community-ivory); background: #1b1710; font: inherit; cursor: pointer; }
+    .event-section-links button[aria-pressed="true"] { color: #100e0b; background: var(--community-gold); }
+    [data-event-list] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+    .event-empty { grid-column: 1 / -1; }
+    @media (max-width: 650px) { [data-event-list] { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body class="community-page">
@@ -65,30 +59,12 @@
       <h1>Community Events</h1>
       <p>Explore public gatherings at Monad Place in the Phoenix area.</p>
     </div>
-    <nav class="event-section-links" aria-label="Event sections">
-      <a href="#monad-events-title">Hosted by Monad Place</a>
-      <a href="#customer-events-title">Client-hosted events</a>
-    </nav>
-    <div class="event-sections">
-    <section aria-labelledby="monad-events-title">
-      <h2 id="monad-events-title">Hosted by Monad Place</h2>
-      <p>See the next date for each series. Select an event for details.</p>
-      <div data-event-list><p>Event details are coming soon.</p></div>
-    </section>
-    <section aria-labelledby="customer-events-title">
-      <h2 id="customer-events-title">Client-hosted events</h2>
-      <p>Explore events hosted at our venue and sign up through the event organizer.</p>
-      <div class="community-grid">
-        <article class="community-card community-card-copy" id="extraordinary-lovers" data-event-end="2027-02-15T00:00:00-07:00">
-          <img class="event-flyer" src="../assets/extraordinary-lovers-flyer.webp" width="800" height="1036" loading="lazy" alt="The Extraordinary Lovers Experience flyer featuring Michael and Laurie">
-          <p class="community-kicker">Valentine’s weekend · February 11–14, 2027</p>
-          <h3>The Extraordinary Lovers Experience</h3>
-          <p>Join Michael and Laurie for a four-day, in-person experience about building and sustaining a loving relationship.</p>
-          <p><a href="https://ele-phoenix.lovable.app/february">View event details and sign up</a></p>
-        </article>
-      </div>
-    </section>
+    <div class="event-section-links" role="group" aria-label="Filter events">
+      <button type="button" data-event-filter="featured" aria-pressed="true">Featured</button>
+      <button type="button" data-event-filter="monad" aria-pressed="false">Monad Place</button>
+      <button type="button" data-event-filter="clients" aria-pressed="false">Client Events</button>
     </div>
+    <div data-event-list><p>Event details are coming soon.</p></div>
   </main>
 </body>
 </html>

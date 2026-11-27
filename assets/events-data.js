@@ -135,6 +135,9 @@ window.monadEvents = [
     "dateLabel": "February 11–14, 2027",
     "visibility": "public",
     "featured": true,
-    "clientHosted": true
+    "clientHosted": true,
+    "description": "Join Michael and Laurie for a four-day, in-person experience about building and sustaining a loving relationship.",
+    "registrationUrl": "https://ele-phoenix.lovable.app/february",
+    "posterHeight": 1036
   }
 ];
