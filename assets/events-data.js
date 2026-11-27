@@ -6,7 +6,8 @@ window.monadEvents = [
     category: "Fashion · Film · Music",
     description: "Meet Arizona designers, filmmakers, musicians, and producers. Share what you’re working on and find people to make your next project with.",
     poster: "creative-mixer-flyer.webp",
-    bannerPosition: "72%",
+    "bannerArt": "creative-mixer-banner.webp",
+    bannerPosition: "50%",
     price: "$10 per ticket",
     dates: [
       {
@@ -68,7 +69,8 @@ window.monadEvents = [
     category: "Consciousness mixer",
     description: "Explore vibrational teachings, take part in guided reflection, and join a conversation about personal growth.",
     poster: "resonance-room-flyer.webp",
-    bannerPosition: "67%",
+    "bannerArt": "resonance-room-banner.webp",
+    bannerPosition: "50%",
     price: "$10 per ticket",
     dates: [
       {
@@ -129,7 +131,8 @@ window.monadEvents = [
     "title": "The Extraordinary Lovers Experience",
     "category": "Client-hosted event",
     "poster": "extraordinary-lovers-flyer.webp",
-    "bannerPosition": "18%",
+    "bannerArt": "extraordinary-lovers-banner.webp",
+    "bannerPosition": "50%",
     "start": "2027-02-11T00:00:00-07:00",
     "end": "2027-02-15T00:00:00-07:00",
     "dateLabel": "February 11–14, 2027",

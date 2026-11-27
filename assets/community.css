@@ -1,10 +1,10 @@
 :root { --gold: #d4af37; --gold-light: #f4d978; --ivory: #f5f1e6; --display: "Playfair Display", Georgia, serif; --community-gold: #e4bf60; --community-ivory: #f5f1e6; }
 .community-banner {
   background-color: #21180e;
-  background-image: linear-gradient(90deg, #171009 0%, #171009 29%, rgba(23,16,9,.96) 49%, rgba(23,16,9,.58) 75%, rgba(23,16,9,.64) 100%), var(--event-art, none);
+  background-image: linear-gradient(90deg, #171009 0%, #171009 29%, rgba(23,16,9,.96) 49%, rgba(23,16,9,.32) 75%, rgba(23,16,9,.42) 100%), var(--event-art, none);
   background-position: center, right var(--event-art-position, 65%);
   background-repeat: no-repeat;
-  background-size: cover, max(56%, 440px) auto;
+  background-size: cover, max(60%, 500px) auto;
  color: var(--community-ivory); border-top: 1px solid #61502b; }
 .community-banner-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 32px; min-height: 200px; }
 .community-banner h2 { margin: 0 0 4px; font: 500 clamp(24px,4vw,36px)/1.15 "Playfair Display", Georgia, serif; }
@@ -35,7 +35,7 @@
 @media (max-width: 850px) { .site-header .nav a:not(.nav-cta) { display: none; } }
 @media (max-width: 650px) {
   .community-banner {
-    background-image: linear-gradient(90deg, rgba(23,16,9,.97), rgba(23,16,9,.73)), var(--event-art, none);
+    background-image: linear-gradient(90deg, rgba(23,16,9,.97), rgba(23,16,9,.58)), var(--event-art, none);
     background-size: cover;
   }
   .community-banner-inner { flex-direction: column; align-items: flex-start; }

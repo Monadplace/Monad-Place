@@ -149,8 +149,9 @@
     const event = featured[index];
     if (selected !== key(event)) {
       selected = key(event);
-      if (event?.poster && /^[a-z0-9][a-z0-9._-]*$/i.test(event.poster)) {
-        banner.style.setProperty("--event-art", 'url("assets/' + event.poster + '")');
+      const artwork = event?.bannerArt || event?.poster;
+      if (artwork && /^[a-z0-9][a-z0-9._-]*$/i.test(artwork)) {
+        banner.style.setProperty("--event-art", 'url("' + new URL("assets/" + artwork, document.baseURI).href + '")');
         banner.style.setProperty("--event-art-position", event.bannerPosition || "65%");
       } else {
         banner.style.removeProperty("--event-art");
