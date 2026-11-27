@@ -37,47 +37,72 @@
 
   const list = document.querySelector("[data-event-list]");
   if (list) {
+    const monthFormat = new Intl.DateTimeFormat("en-US", {
+      month: "long", year: "numeric", timeZone: "America/Phoenix"
+    });
     let previous;
+
     function renderEvents() {
-      const upcoming = eligible();
-      const identity = JSON.stringify(upcoming.map(event => [event.id, event.start]));
+      const occurrences = eligible().flatMap(event =>
+        (event.upcomingDates || [event]).map(date => ({ ...event, ...date }))
+      ).sort((a, b) => (Date.parse(a.start) || Infinity) - (Date.parse(b.start) || Infinity));
+      const identity = JSON.stringify(occurrences.map(event => [event.id, event.start]));
       if (identity === previous) return;
+      const firstRender = previous === undefined;
       previous = identity;
-      list.replaceChildren();
-      if (!upcoming.length) list.append(element("p", "Check back for the next public event."));
-      for (const event of upcoming) {
-        const card = element("article", null, "community-card");
-        card.id = event.id;
-        const image = element("img");
-        image.src = "../assets/" + event.poster;
-        image.alt = event.title + " poster";
-        image.width = 720;
-        image.height = 900;
-        image.loading = "lazy";
-        const copy = element("div", null, "community-card-copy");
-        copy.append(element("p", event.category, "community-kicker"), element("h2", event.title),
-          element("p", timing(event)), element("p", event.description));
+      const expanded = new Set([...list.querySelectorAll("details[open]")].map(row => row.dataset.occurrence));
+      const fragment = document.createDocumentFragment();
+      const months = new Map();
+      const series = new Set();
+
+      for (const event of occurrences) {
+        const date = event.start ? new Date(event.start) : null;
+        const month = date ? monthFormat.format(date) : "Dates to be announced";
+        if (!months.has(month)) {
+          const group = element("section", null, "event-month");
+          group.append(element("h3", month));
+          fragment.append(group);
+          months.set(month, group);
+        }
+        const row = element("details", null, "event-row");
+        row.dataset.occurrence = event.id + "|" + (event.start || "");
+        row.open = expanded.has(row.dataset.occurrence);
+        if (!series.has(event.id)) {
+          row.id = event.id;
+          series.add(event.id);
+        }
+        const summary = element("summary");
+        const when = element(date ? "time" : "span", timing(event));
+        if (date) when.dateTime = event.start;
+        summary.append(element("strong", event.title), when);
+        const copy = element("div", null, "event-row-content");
+        copy.append(element("p", event.category, "community-kicker"), element("p", event.description));
         if (event.price) copy.append(element("p", event.price));
-        if (event.upcomingDates?.length > 1) {
-          const schedule = element("details");
-          const dates = element("ul");
-          for (const date of event.upcomingDates.slice(1)) dates.append(element("li", timing(date)));
-          schedule.append(element("summary", "More dates"), dates);
-          copy.append(schedule);
+        if (/^https:\/\//i.test(event.registrationUrl || "")) {
+          const registration = element("a", "Registration details");
+          registration.href = event.registrationUrl;
+          copy.append(registration);
         }
-        if (event.visibility === "public" && /^https:\/\//i.test(event.registrationUrl || "")) {
-          const link = element("a", "Registration details");
-          link.href = event.registrationUrl;
-          copy.append(link);
-        }
-        card.append(image, copy);
-        list.append(card);
+        row.append(summary, copy);
+        months.get(month).append(row);
       }
-      if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      if (!occurrences.length) fragment.append(element("p", "Check back for the next public event."));
+      list.replaceChildren(fragment);
+      if (firstRender) openLinkedEvent();
     }
+
+    function openLinkedEvent() {
+      const row = document.getElementById(location.hash.slice(1));
+      if (row?.matches("details.event-row")) {
+        row.open = true;
+        row.scrollIntoView();
+      }
+    }
+
     renderEvents();
     setInterval(renderEvents, 15000);
     document.addEventListener("visibilitychange", renderEvents);
+    window.addEventListener("hashchange", openLinkedEvent);
   }
 
   const title = document.querySelector("[data-banner-title]");
