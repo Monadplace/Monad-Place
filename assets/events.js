@@ -23,6 +23,7 @@
   const timeFormat = new Intl.DateTimeFormat("en-US", { timeStyle: "short", timeZone: "America/Phoenix" });
 
   function timing(event) {
+    if (event.dateLabel) return event.dateLabel;
     if (event.allDay) return dayFormat.format(new Date(event.start)) + " · Time to be confirmed";
     if (event.end) return dayFormat.format(new Date(event.start)) + " · " + timeFormat.formatRange(new Date(event.start), new Date(event.end)) + " (Arizona time)";
     return event.start ? format.format(new Date(event.start)) + " (Arizona time)" : "Date to be announced";
@@ -37,47 +38,67 @@
 
   const list = document.querySelector("[data-event-list]");
   if (list) {
-    let previous;
-    function renderEvents() {
-      const upcoming = eligible();
-      const identity = JSON.stringify(upcoming.map(event => [event.id, event.start]));
-      if (identity === previous) return;
-      previous = identity;
-      list.replaceChildren();
-      if (!upcoming.length) list.append(element("p", "Check back for the next public event."));
-      for (const event of upcoming) {
-        const card = element("article", null, "community-card");
-        card.id = event.id;
-        const image = element("img");
-        image.src = "../assets/" + event.poster;
-        image.alt = event.title + " poster";
-        image.width = 720;
-        image.height = 900;
-        image.loading = "lazy";
-        const copy = element("div", null, "community-card-copy");
-        copy.append(element("p", event.category, "community-kicker"), element("h2", event.title),
-          element("p", timing(event)), element("p", event.description));
-        if (event.price) copy.append(element("p", event.price));
-        if (event.upcomingDates?.length > 1) {
-          const schedule = element("details");
-          const dates = element("ul");
-          for (const date of event.upcomingDates.slice(1)) dates.append(element("li", timing(date)));
-          schedule.append(element("summary", "More dates"), dates);
-          copy.append(schedule);
-        }
-        if (event.visibility === "public" && /^https:\/\//i.test(event.registrationUrl || "")) {
-          const link = element("a", "Registration details");
-          link.href = event.registrationUrl;
-          copy.append(link);
-        }
-        card.append(image, copy);
-        list.append(card);
+    const cards = events.filter(event => event.visibility === "public" && !event.clientHosted);
+    const dateLabels = new Map();
+    const registrationLinks = new Map();
+
+    list.replaceChildren();
+    if (!cards.length) list.append(element("p", "Check back for the next public event."));
+    for (const event of cards) {
+      const row = element("details", null, "event-row");
+      row.id = event.id;
+      const summary = element("summary");
+      const dateLabel = element("span", null, "event-next-date");
+      summary.append(element("strong", event.title), dateLabel);
+      const copy = element("div", null, "event-row-content");
+      copy.append(element("p", event.category, "community-kicker"), element("p", event.description));
+      if (event.poster) {
+        const flyer = element("img", null, "event-flyer");
+        flyer.src = "../assets/" + event.poster;
+        flyer.alt = event.title + " flyer";
+        flyer.width = 800;
+        flyer.height = 1000;
+        flyer.loading = "lazy";
+        copy.prepend(flyer);
       }
-      if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      if (event.price) copy.append(element("p", event.price));
+      if (/^https:\/\//i.test(event.registrationUrl || "")) {
+        const registration = element("a", "Registration details");
+        registration.href = event.registrationUrl;
+        registrationLinks.set(event.id, registration);
+        copy.append(registration);
+      }
+      row.append(summary, copy);
+      list.append(row);
+      dateLabels.set(event.id, dateLabel);
     }
-    renderEvents();
-    setInterval(renderEvents, 15000);
-    document.addEventListener("visibilitychange", renderEvents);
+
+    const clientListings = document.querySelectorAll('[data-event-end]');
+    function updateDates() {
+      for (const listing of clientListings) listing.hidden = Date.parse(listing.dataset.eventEnd) <= Date.now();
+      const upcoming = new Map(eligible().map(event => [event.id, event]));
+      for (const [id, label] of dateLabels) {
+        const next = upcoming.get(id);
+        const text = next?.start ? "Next: " + timing(next) : "Next date to be announced";
+        if (label.textContent !== text) label.textContent = text;
+        const registration = registrationLinks.get(id);
+        if (registration) registration.hidden = !next?.start;
+      }
+    }
+
+    function openLinkedEvent() {
+      const row = document.getElementById(location.hash.slice(1));
+      if (row?.matches("details.event-row")) {
+        row.open = true;
+        row.scrollIntoView();
+      }
+    }
+
+    updateDates();
+    openLinkedEvent();
+    setInterval(updateDates, 15000);
+    document.addEventListener("visibilitychange", updateDates);
+    window.addEventListener("hashchange", openLinkedEvent);
   }
 
   const title = document.querySelector("[data-banner-title]");

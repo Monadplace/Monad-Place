@@ -12,6 +12,16 @@
   <script defer src="../assets/events.js"></script>
   <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/monad-favicon.svg">
   <link rel="stylesheet" href="../assets/site-header.css">
+  <style>
+    [data-event-list] { display: grid; gap: 12px; margin-block: 24px 48px; }
+    .event-row { border: 1px solid #61502b; background: #1b1710; }
+    .event-row summary { cursor: pointer; padding: 12px 16px; color: var(--community-ivory); }
+    .event-row summary strong { margin-inline: 6px 12px; }
+    .event-row summary .event-next-date { display: inline-block; font-size: .85rem; color: var(--community-gold); }
+    .event-row-content { padding: 0 16px 16px; }
+    .event-row-content p { margin: 0 0 8px; }
+      .event-flyer { display: block; width: min(100%, 320px); height: auto; margin: 0 0 16px; }
+  </style>
 </head>
 <body class="community-page">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +50,24 @@
       <h1>Community Events</h1>
       <p>Explore public gatherings at Monad Place in the Phoenix area.</p>
     </div>
-    <div class="community-grid" data-event-list><p>Event details are coming soon.</p></div>
+    <section aria-labelledby="monad-events-title">
+      <h2 id="monad-events-title">Hosted by Monad Place</h2>
+      <p>See the next date for each series. Select an event for details.</p>
+      <div data-event-list><p>Event details are coming soon.</p></div>
+    </section>
+    <section aria-labelledby="customer-events-title">
+      <h2 id="customer-events-title">Client-hosted events</h2>
+      <p>Explore events hosted at our venue and sign up through the event organizer.</p>
+      <div class="community-grid">
+        <article class="community-card community-card-copy" id="extraordinary-lovers" data-event-end="2027-02-15T00:00:00-07:00">
+          <img class="event-flyer" src="../assets/extraordinary-lovers-flyer.webp" width="800" height="1036" loading="lazy" alt="The Extraordinary Lovers Experience flyer featuring Michael and Laurie">
+          <p class="community-kicker">Valentine’s weekend · February 11–14, 2027</p>
+          <h3>The Extraordinary Lovers Experience</h3>
+          <p>Join Michael and Laurie for a four-day, in-person experience about building and sustaining a loving relationship.</p>
+          <p><a href="https://ele-phoenix.lovable.app/february">View event details and sign up</a></p>
+        </article>
+      </div>
+    </section>
   </main>
 </body>
 </html>
