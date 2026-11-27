@@ -23,6 +23,19 @@
       .event-flyer { display: block; width: min(100%, 320px); height: auto; margin: 0 0 16px; }
       [data-event-list] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); align-items: start; }
     .hosted-event > .event-flyer { margin-inline: auto; }
+      .community-intro { padding-block: clamp(24px, 4vw, 48px) 18px; }
+    .event-section-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .event-section-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 12px; border: 1px solid #61502b; text-decoration: none; }
+    .event-sections { display: grid; gap: 24px; }
+    .event-sections section { min-width: 0; }
+    .event-sections h2 { margin-block: 0 8px; scroll-margin-top: 16px; }
+    .event-sections section > p { margin-block: 0 12px; }
+    .event-sections [data-event-list] { margin-block: 12px 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+    .event-sections .event-flyer { width: min(100%, 220px); margin-bottom: 10px; }
+    .event-sections .community-grid { grid-template-columns: 1fr; padding-bottom: 24px; }
+    @media (min-width: 900px) {
+      .event-sections { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: start; }
+    }
   </style>
 </head>
 <body class="community-page">
@@ -52,6 +65,11 @@
       <h1>Community Events</h1>
       <p>Explore public gatherings at Monad Place in the Phoenix area.</p>
     </div>
+    <nav class="event-section-links" aria-label="Event sections">
+      <a href="#monad-events-title">Hosted by Monad Place</a>
+      <a href="#customer-events-title">Client-hosted events</a>
+    </nav>
+    <div class="event-sections">
     <section aria-labelledby="monad-events-title">
       <h2 id="monad-events-title">Hosted by Monad Place</h2>
       <p>See the next date for each series. Select an event for details.</p>
@@ -70,6 +88,7 @@
         </article>
       </div>
     </section>
+    </div>
   </main>
 </body>
 </html>
