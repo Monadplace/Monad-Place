@@ -37,58 +37,41 @@
 
   const list = document.querySelector("[data-event-list]");
   if (list) {
-    const monthFormat = new Intl.DateTimeFormat("en-US", {
-      month: "long", year: "numeric", timeZone: "America/Phoenix"
-    });
-    let previous;
+    const cards = events.filter(event => event.visibility === "public");
+    const dateLabels = new Map();
+    const registrationLinks = new Map();
 
-    function renderEvents() {
-      const occurrences = eligible().flatMap(event =>
-        (event.upcomingDates || [event]).map(date => ({ ...event, ...date }))
-      ).sort((a, b) => (Date.parse(a.start) || Infinity) - (Date.parse(b.start) || Infinity));
-      const identity = JSON.stringify(occurrences.map(event => [event.id, event.start]));
-      if (identity === previous) return;
-      const firstRender = previous === undefined;
-      previous = identity;
-      const expanded = new Set([...list.querySelectorAll("details[open]")].map(row => row.dataset.occurrence));
-      const fragment = document.createDocumentFragment();
-      const months = new Map();
-      const series = new Set();
-
-      for (const event of occurrences) {
-        const date = event.start ? new Date(event.start) : null;
-        const month = date ? monthFormat.format(date) : "Dates to be announced";
-        if (!months.has(month)) {
-          const group = element("section", null, "event-month");
-          group.append(element("h3", month));
-          fragment.append(group);
-          months.set(month, group);
-        }
-        const row = element("details", null, "event-row");
-        row.dataset.occurrence = event.id + "|" + (event.start || "");
-        row.open = expanded.has(row.dataset.occurrence);
-        if (!series.has(event.id)) {
-          row.id = event.id;
-          series.add(event.id);
-        }
-        const summary = element("summary");
-        const when = element(date ? "time" : "span", timing(event));
-        if (date) when.dateTime = event.start;
-        summary.append(element("strong", event.title), when);
-        const copy = element("div", null, "event-row-content");
-        copy.append(element("p", event.category, "community-kicker"), element("p", event.description));
-        if (event.price) copy.append(element("p", event.price));
-        if (/^https:\/\//i.test(event.registrationUrl || "")) {
-          const registration = element("a", "Registration details");
-          registration.href = event.registrationUrl;
-          copy.append(registration);
-        }
-        row.append(summary, copy);
-        months.get(month).append(row);
+    list.replaceChildren();
+    if (!cards.length) list.append(element("p", "Check back for the next public event."));
+    for (const event of cards) {
+      const row = element("details", null, "event-row");
+      row.id = event.id;
+      const summary = element("summary");
+      const dateLabel = element("span", null, "event-next-date");
+      summary.append(element("strong", event.title), dateLabel);
+      const copy = element("div", null, "event-row-content");
+      copy.append(element("p", event.category, "community-kicker"), element("p", event.description));
+      if (event.price) copy.append(element("p", event.price));
+      if (/^https:\/\//i.test(event.registrationUrl || "")) {
+        const registration = element("a", "Registration details");
+        registration.href = event.registrationUrl;
+        registrationLinks.set(event.id, registration);
+        copy.append(registration);
       }
-      if (!occurrences.length) fragment.append(element("p", "Check back for the next public event."));
-      list.replaceChildren(fragment);
-      if (firstRender) openLinkedEvent();
+      row.append(summary, copy);
+      list.append(row);
+      dateLabels.set(event.id, dateLabel);
+    }
+
+    function updateDates() {
+      const upcoming = new Map(eligible().map(event => [event.id, event]));
+      for (const [id, label] of dateLabels) {
+        const next = upcoming.get(id);
+        const text = next?.start ? "Next: " + timing(next) : "Next date to be announced";
+        if (label.textContent !== text) label.textContent = text;
+        const registration = registrationLinks.get(id);
+        if (registration) registration.hidden = !next?.start;
+      }
     }
 
     function openLinkedEvent() {
@@ -99,9 +82,10 @@
       }
     }
 
-    renderEvents();
-    setInterval(renderEvents, 15000);
-    document.addEventListener("visibilitychange", renderEvents);
+    updateDates();
+    openLinkedEvent();
+    setInterval(updateDates, 15000);
+    document.addEventListener("visibilitychange", updateDates);
     window.addEventListener("hashchange", openLinkedEvent);
   }
 
