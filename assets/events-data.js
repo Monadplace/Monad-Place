@@ -7,8 +7,58 @@ window.monadEvents = [
     description: "Meet Arizona designers, filmmakers, musicians, and producers. Share what you’re working on and find people to make your next project with.",
     poster: "creative-mixer.webp",
     bannerPosition: "72%",
-    start: null,
-    end: null,
+    price: "$10 per ticket",
+    dates: [
+      {
+        "start": "2027-01-14T00:00:00-07:00",
+        "end": "2027-01-15T00:00:00-07:00",
+        "allDay": true
+      },
+      {
+        "start": "2027-02-04T17:30:00-08:00",
+        "end": "2027-02-04T20:00:00-08:00"
+      },
+      {
+        "start": "2027-03-04T17:30:00-08:00",
+        "end": "2027-03-04T20:00:00-08:00"
+      },
+      {
+        "start": "2027-04-01T18:30:00-07:00",
+        "end": "2027-04-01T21:00:00-07:00"
+      },
+      {
+        "start": "2027-05-06T18:30:00-07:00",
+        "end": "2027-05-06T21:00:00-07:00"
+      },
+      {
+        "start": "2027-06-03T18:30:00-07:00",
+        "end": "2027-06-03T21:00:00-07:00"
+      },
+      {
+        "start": "2027-07-01T18:30:00-07:00",
+        "end": "2027-07-01T21:00:00-07:00"
+      },
+      {
+        "start": "2027-08-05T18:30:00-07:00",
+        "end": "2027-08-05T21:00:00-07:00"
+      },
+      {
+        "start": "2027-09-02T18:30:00-07:00",
+        "end": "2027-09-02T21:00:00-07:00"
+      },
+      {
+        "start": "2027-10-07T18:30:00-07:00",
+        "end": "2027-10-07T21:00:00-07:00"
+      },
+      {
+        "start": "2027-11-04T18:30:00-07:00",
+        "end": "2027-11-04T21:00:00-07:00"
+      },
+      {
+        "start": "2027-12-02T17:30:00-08:00",
+        "end": "2027-12-02T20:00:00-08:00"
+      }
+    ],
     visibility: "public",
     featured: true,
     registrationUrl: null
@@ -20,8 +70,58 @@ window.monadEvents = [
     description: "Explore vibrational teachings, take part in guided reflection, and join a conversation about personal growth.",
     poster: "resonance-room.webp",
     bannerPosition: "67%",
-    start: null,
-    end: null,
+    price: "$10 per ticket",
+    dates: [
+      {
+        "start": "2027-01-28T00:00:00-07:00",
+        "end": "2027-01-29T00:00:00-07:00",
+        "allDay": true
+      },
+      {
+        "start": "2027-02-25T17:30:00-08:00",
+        "end": "2027-02-25T20:00:00-08:00"
+      },
+      {
+        "start": "2027-03-25T18:30:00-07:00",
+        "end": "2027-03-25T21:00:00-07:00"
+      },
+      {
+        "start": "2027-04-22T18:30:00-07:00",
+        "end": "2027-04-22T21:00:00-07:00"
+      },
+      {
+        "start": "2027-05-27T18:30:00-07:00",
+        "end": "2027-05-27T21:00:00-07:00"
+      },
+      {
+        "start": "2027-06-24T18:30:00-07:00",
+        "end": "2027-06-24T21:00:00-07:00"
+      },
+      {
+        "start": "2027-07-22T18:30:00-07:00",
+        "end": "2027-07-22T21:00:00-07:00"
+      },
+      {
+        "start": "2027-08-26T18:30:00-07:00",
+        "end": "2027-08-26T21:00:00-07:00"
+      },
+      {
+        "start": "2027-09-23T18:30:00-07:00",
+        "end": "2027-09-23T21:00:00-07:00"
+      },
+      {
+        "start": "2027-10-28T18:30:00-07:00",
+        "end": "2027-10-28T21:00:00-07:00"
+      },
+      {
+        "start": "2027-11-25T17:30:00-08:00",
+        "end": "2027-11-25T20:00:00-08:00"
+      },
+      {
+        "start": "2027-12-23T17:30:00-08:00",
+        "end": "2027-12-23T20:00:00-08:00"
+      }
+    ],
     visibility: "public",
     featured: true,
     registrationUrl: null

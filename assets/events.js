@@ -5,7 +5,12 @@
   });
 
   function eligible(now = Date.now()) {
-    return events.filter(event => {
+    return events.map(event => {
+      if (!event.dates) return event;
+      const upcomingDates = event.dates.filter(date => Date.parse(date.end) > now);
+      return upcomingDates.length ? { ...event, ...upcomingDates[0], upcomingDates } : null;
+    }).filter(event => {
+      if (!event) return false;
       if (event.visibility !== "public") return false;
       if (!event.start && !event.end) return true;
       const start = Date.parse(event.start);
@@ -14,7 +19,12 @@
     }).sort((a, b) => (Date.parse(a.start) || Infinity) - (Date.parse(b.start) || Infinity));
   }
 
+  const dayFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "full", timeZone: "America/Phoenix" });
+  const timeFormat = new Intl.DateTimeFormat("en-US", { timeStyle: "short", timeZone: "America/Phoenix" });
+
   function timing(event) {
+    if (event.allDay) return dayFormat.format(new Date(event.start)) + " · Time to be confirmed";
+    if (event.end) return dayFormat.format(new Date(event.start)) + " · " + timeFormat.formatRange(new Date(event.start), new Date(event.end)) + " (Arizona time)";
     return event.start ? format.format(new Date(event.start)) + " (Arizona time)" : "Date to be announced";
   }
 
@@ -30,7 +40,7 @@
     let previous;
     function renderEvents() {
       const upcoming = eligible();
-      const identity = JSON.stringify(upcoming.map(event => event.id));
+      const identity = JSON.stringify(upcoming.map(event => [event.id, event.start]));
       if (identity === previous) return;
       previous = identity;
       list.replaceChildren();
@@ -47,6 +57,14 @@
         const copy = element("div", null, "community-card-copy");
         copy.append(element("p", event.category, "community-kicker"), element("h2", event.title),
           element("p", timing(event)), element("p", event.description));
+        if (event.price) copy.append(element("p", event.price));
+        if (event.upcomingDates?.length > 1) {
+          const schedule = element("details");
+          const dates = element("ul");
+          for (const date of event.upcomingDates.slice(1)) dates.append(element("li", timing(date)));
+          schedule.append(element("summary", "More dates"), dates);
+          copy.append(schedule);
+        }
         if (event.visibility === "public" && /^https:\/\//i.test(event.registrationUrl || "")) {
           const link = element("a", "Registration details");
           link.href = event.registrationUrl;
@@ -78,11 +96,12 @@
 
   function draw(direction = 0, announce = false) {
     const featured = eligible().filter(event => event.featured);
-    const current = featured.findIndex(event => event.id === selected);
+    const key = event => event ? event.id + "|" + (event.start || "") : undefined;
+    const current = featured.findIndex(event => key(event) === selected);
     const index = current < 0 ? 0 : (current + direction + featured.length) % featured.length;
     const event = featured[index];
-    if (selected !== event?.id) {
-      selected = event?.id;
+    if (selected !== key(event)) {
+      selected = key(event);
       if (event?.poster && /^[a-z0-9][a-z0-9._-]*$/i.test(event.poster)) {
         banner.style.setProperty("--event-art", 'url("assets/' + event.poster + '")');
         banner.style.setProperty("--event-art-position", event.bannerPosition || "65%");
